@@ -45,7 +45,7 @@ if(!isset($_SESSION['IS_LOGIN'])){
                         <li><a href="#"><i class="fa-solid fa-user"></i></a>
                             <ul class="dropdown">
                                 <li><a href="#"><i class="fa-solid fa-gears">Setting</i></a></li>
-                                <li><a href="View/logout.php"><i class="fa-solid fa-right-from-bracket">Logout</i></a></li>
+                                <li><a href="../View/logout.php"><i class="fa-solid fa-right-from-bracket">Logout</i></a></li>
                             </ul>
                         </li>
                     </ul>
