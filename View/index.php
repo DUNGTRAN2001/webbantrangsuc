@@ -31,7 +31,7 @@ if(!isset($_SESSION['IS_LOGIN'])){
         <div>
             <ul id="navbar">
                 <li><a class="active" href="index.php">Home</a></li>
-                <li><a href="shop.html">Shop</a></li>
+                <li><a href="shop.php">Shop</a></li>
                 <li><a href="blog.html">Blog</a></li>
                 <li><a href="about.html">About</a></li>
                 <li><a href="contact.html">Contact</a></li>
@@ -68,7 +68,6 @@ if(!isset($_SESSION['IS_LOGIN'])){
         <h1>On all products</h1>
         <p>Save more with coupon % up to 70% off ❤ </p>
         <button>Shop Now</button>
-    </section>
 
     <section id="feature" class="section-p1">
         <div class="fe-box">
@@ -136,7 +135,7 @@ if(!isset($_SESSION['IS_LOGIN'])){
 
             </div>
             <div class="pro" onclick="window.location.href='sproduct.html';">
-                <img src="../ds/img/products/f3.jpg" alt="">
+                <img src="https://drive.google.com/file/d/1QByOjGo4z5JOy8VR1myjT2CXuRJZ1kaJ/view" alt="">
                 <div class="des">
                     <span>adidas</span>
                     <h5>Cartoon Astronaut T-Shirts</h5>
