@@ -24,7 +24,7 @@ if(isset($_POST['signin'])){
             }
             $_SESSION['IS_LOGIN']='yes';
             echo "<script type='text/javascript'>alert('Login success');</script>";
-            header('location:index.php');
+            header('location:../index.php');
             die();
         }else echo "<script type='text/javascript'>alert('Wrong username or password');</script>";
         mysqli_free_result($result);

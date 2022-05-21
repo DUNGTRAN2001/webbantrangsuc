@@ -14,9 +14,9 @@ if(!isset($_SESSION['IS_LOGIN'])){
     <title>Chợ tốt demo1</title>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css" />
 
-    <link rel="stylesheet" href="../ds/fontawesome-free-6.1.1-web/fontawesome-free-6.1.1-web/css/all.min.css">
+    <link rel="stylesheet" href="ds/fontawesome-free-6.1.1-web/fontawesome-free-6.1.1-web/css/all.min.css">
 
-    <link rel="stylesheet" href="../ds/style.css">
+    <link rel="stylesheet" href="ds/style.css">
 
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css">
 
@@ -27,25 +27,25 @@ if(!isset($_SESSION['IS_LOGIN'])){
 
 
     <section id="header">
-        <a href="#"><img class="logo" src="../ds/img/chototlogo.png" alt=""></a>
+        <a href="#"><img class="logo" src="ds/img/chototlogo.png" alt=""></a>
         <div>
             <ul id="navbar">
                 <li><a class="active" href="index.php">Home</a></li>
-                <li><a href="shop.php">Shop</a></li>
-                <li><a href="blog.html">Blog</a></li>
-                <li><a href="about.html">About</a></li>
-                <li><a href="contact.html">Contact</a></li>
-                <li><a href="search.html"><i class="fas fa-search" id="search-icon"></i></a></li>
+                <li><a href="View/shop.html">Shop</a></li>
+                <li><a href="View/blog.html">Blog</a></li>
+                <li><a href="View/about.html">About</a></li>
+                <li><a href="View/contact.html">Contact</a></li>
+                <li><a href="View/search.html"><i class="fas fa-search" id="search-icon"></i></a></li>
 
            
-                <li id="lg-bag"><a href="cart.html"><i class="fa-solid fa-bag-shopping"></i></a></li>
+                <li id="lg-bag"><a href="View/cart.html"><i class="fa-solid fa-bag-shopping"></i></a></li>
                 <a href="#" id="close"><i class="fa-solid fa-xmark"></i></a>
                 <nav role="navigation">
                     <ul>
                         <li><a href="#"><i class="fa-solid fa-user"></i></a>
                             <ul class="dropdown">
                                 <li><a href="#"><i class="fa-solid fa-gears">Setting</i></a></li>
-                                <li><a href="logout.php"><i class="fa-solid fa-right-from-bracket">Logout</i></a></li>
+                                <li><a href="../View/logout.php"><i class="fa-solid fa-right-from-bracket">Logout</i></a></li>
                             </ul>
                         </li>
                     </ul>
@@ -55,7 +55,7 @@ if(!isset($_SESSION['IS_LOGIN'])){
 
         <!--reponsive thanh mở hiện trên điện thoại ,còn máy tính thì ko -->
         <div id="mobile">
-            <a href="cart.html"><i class="fa-solid fa-bag-shopping"></i></a>
+            <a href="View/cart.html"><i class="fa-solid fa-bag-shopping"></i></a>
             <i id="bar" class="fa-solid fa-outdent"></i>
         </div>
     </section>
@@ -68,30 +68,31 @@ if(!isset($_SESSION['IS_LOGIN'])){
         <h1>On all products</h1>
         <p>Save more with coupon % up to 70% off ❤ </p>
         <button>Shop Now</button>
+    </section>
 
     <section id="feature" class="section-p1">
         <div class="fe-box">
-            <img src="../ds/img/features/f1.png" alt="">
+            <img src="ds/img/features/f1.png" alt="">
             <h6>Free Shipping</h6>
         </div>
         <div class="fe-box">
-            <img src="../ds/img/features/f2.png" alt="">
+            <img src="ds/img/features/f2.png" alt="">
             <h6>Online Order</h6>
         </div>
         <div class="fe-box">
-            <img src="../ds/img/features/f3.png" alt="">
+            <img src="ds/img/features/f3.png" alt="">
             <h6>Save Money</h6>
         </div>
         <div class="fe-box">
-            <img src="../ds/img/features/f4.png" alt="">
+            <img src="ds/img/features/f4.png" alt="">
             <h6>Promotions</h6>
         </div>
         <div class="fe-box">
-            <img src="../ds/img/features/f5.png" alt="">
+            <img src="ds/img/features/f5.png" alt="">
             <h6>Happy Sell</h6>
         </div>
         <div class="fe-box">
-            <img src="../ds/img/features/f6.png" alt="">
+            <img src="ds/img/features/f6.png" alt="">
             <h6>F24/7 Support</h6>
         </div>
     </section>
@@ -101,7 +102,7 @@ if(!isset($_SESSION['IS_LOGIN'])){
         <p>Summer Collection New Morden Design</p>
         <div class="pro-container">
             <div class="pro" onclick="window.location.href='sproduct.html';">  
-                <img src="../ds/img/products/f1.jpg" alt="">
+                <img src="ds/img/products/f1.jpg" alt="">
                 <div class="des">
                     <span>adidas</span>
                     <h5>Cartoon Astronaut T-Shirts</h5>
@@ -118,7 +119,7 @@ if(!isset($_SESSION['IS_LOGIN'])){
 
             </div>
             <div class="pro" onclick="window.location.href='sproduct.html';">
-                <img src="../ds/img/products/f2.jpg" alt="">
+                <img src="ds/img/products/f2.jpg" alt="">
                 <div class="des">
                     <span>adidas</span>
                     <h5>Cartoon Astronaut T-Shirts</h5>
@@ -135,7 +136,7 @@ if(!isset($_SESSION['IS_LOGIN'])){
 
             </div>
             <div class="pro" onclick="window.location.href='sproduct.html';">
-                <img src="https://drive.google.com/file/d/1QByOjGo4z5JOy8VR1myjT2CXuRJZ1kaJ/view" alt="">
+                <img src="ds/img/products/f3.jpg" alt="">
                 <div class="des">
                     <span>adidas</span>
                     <h5>Cartoon Astronaut T-Shirts</h5>
@@ -152,7 +153,7 @@ if(!isset($_SESSION['IS_LOGIN'])){
 
             </div>
             <div class="pro" onclick="window.location.href='sproduct.html';">
-                <img src="../ds/img/products/f4.jpg" alt="">
+                <img src="ds/img/products/f4.jpg" alt="">
                 <div class="des">
                     <span>adidas</span>
                     <h5>Cartoon Astronaut T-Shirts</h5>
@@ -169,7 +170,7 @@ if(!isset($_SESSION['IS_LOGIN'])){
 
             </div>
             <div class="pro" onclick="window.location.href='sproduct.html';">
-                <img src="../ds/img/products/f5.jpg" alt="">
+                <img src="ds/img/products/f5.jpg" alt="">
                 <div class="des">
                     <span>adidas</span>
                     <h5>Cartoon Astronaut T-Shirts</h5>
@@ -186,7 +187,7 @@ if(!isset($_SESSION['IS_LOGIN'])){
 
             </div>
             <div class="pro" onclick="window.location.href='sproduct.html';">
-                <img src="../ds/img/products/f6.jpg" alt="">
+                <img src="ds/img/products/f6.jpg" alt="">
                 <div class="des">
                     <span>adidas</span>
                     <h5>Cartoon Astronaut T-Shirts</h5>
@@ -203,7 +204,7 @@ if(!isset($_SESSION['IS_LOGIN'])){
 
             </div>
             <div class="pro" onclick="window.location.href='sproduct.html';">
-                <img src="../ds/img/products/f7.jpg" alt="">
+                <img src="ds/img/products/f7.jpg" alt="">
                 <div class="des">
                     <span>adidas</span>
                     <h5>Cartoon Astronaut T-Shirts</h5>
@@ -220,7 +221,7 @@ if(!isset($_SESSION['IS_LOGIN'])){
 
             </div>
             <div class="pro" onclick="window.location.href='sproduct.html';">
-                <img src="../ds/img/products/f8.jpg" alt="">
+                <img src="ds/img/products/f8.jpg" alt="">
                 <div class="des">
                     <span>adidas</span>
                     <h5>Cartoon Astronaut T-Shirts</h5>
@@ -250,7 +251,7 @@ if(!isset($_SESSION['IS_LOGIN'])){
         <p>Summer Collection New Morden Design</p>
         <div class="pro-container">
             <div class="pro" onclick="window.location.href='sproduct.html';">
-                <img src="../ds/img/products/n1.jpg" alt="">
+                <img src="ds/img/products/n1.jpg" alt="">
                 <div class="des">
                     <span>adidas</span>
                     <h5>Cartoon Astronaut T-Shirts</h5>
@@ -267,7 +268,7 @@ if(!isset($_SESSION['IS_LOGIN'])){
 
             </div>
             <div class="pro" onclick="window.location.href='sproduct.html';">
-                <img src="../ds/img/products/n2.jpg" alt="">
+                <img src="ds/img/products/n2.jpg" alt="">
                 <div class="des">
                     <span>adidas</span>
                     <h5>Cartoon Astronaut T-Shirts</h5>
@@ -284,7 +285,7 @@ if(!isset($_SESSION['IS_LOGIN'])){
 
             </div>
             <div class="pro" onclick="window.location.href='sproduct.html';">
-                <img src="../ds/img/products/n3.jpg" alt="">
+                <img src="ds/img/products/n3.jpg" alt="">
                 <div class="des">
                     <span>adidas</span>
                     <h5>Cartoon Astronaut T-Shirts</h5>
@@ -301,7 +302,7 @@ if(!isset($_SESSION['IS_LOGIN'])){
 
             </div>
             <div class="pro" onclick="window.location.href='sproduct.html';">
-                <img src="../ds/img/products/n4.jpg" alt="">
+                <img src="ds/img/products/n4.jpg" alt="">
                 <div class="des">
                     <span>adidas</span>
                     <h5>Cartoon Astronaut T-Shirts</h5>
@@ -318,7 +319,7 @@ if(!isset($_SESSION['IS_LOGIN'])){
 
             </div>
             <div class="pro" onclick="window.location.href='sproduct.html';">
-                <img src="../ds/img/products/n5.jpg" alt="">
+                <img src="ds/img/products/n5.jpg" alt="">
                 <div class="des">
                     <span>adidas</span>
                     <h5>Cartoon Astronaut T-Shirts</h5>
@@ -335,7 +336,7 @@ if(!isset($_SESSION['IS_LOGIN'])){
 
             </div>
             <div class="pro" onclick="window.location.href='sproduct.html';">
-                <img src="../ds/img/products/n6.jpg" alt="">
+                <img src="ds/img/products/n6.jpg" alt="">
                 <div class="des">
                     <span>adidas</span>
                     <h5>Cartoon Astronaut T-Shirts</h5>
@@ -352,7 +353,7 @@ if(!isset($_SESSION['IS_LOGIN'])){
 
             </div>
             <div class="pro" onclick="window.location.href='sproduct.html';">
-                <img src="../ds/img/products/n7.jpg" alt="">
+                <img src="ds/img/products/n7.jpg" alt="">
                 <div class="des">
                     <span>adidas</span>
                     <h5>Cartoon Astronaut T-Shirts</h5>
@@ -369,7 +370,7 @@ if(!isset($_SESSION['IS_LOGIN'])){
 
             </div>
             <div class="pro" onclick="window.location.href='sproduct.html';">
-                <img src="../ds/img/products/n8.jpg" alt="">
+                <img src="ds/img/products/n8.jpg" alt="">
                 <div class="des">
                     <span>adidas</span>
                     <h5>Cartoon Astronaut T-Shirts</h5>
@@ -442,7 +443,7 @@ if(!isset($_SESSION['IS_LOGIN'])){
     <footer class="section-p1">
 
         <div class="col">
-            <img class="logo2" src="../ds/img/chototlogo.png" alt="">
+            <img class="logo2" src="ds/img/chototlogo.png" alt="">
             <h4>Contact</h4>
             <p><strong>Address:</strong>02 Ngô Đức Kế, Phường Bến Nghé, Quận 1, TP Hồ Chí Minh</p>
             <p><strong>Phone:</strong>(+84) 0312120782</p>
@@ -484,11 +485,11 @@ if(!isset($_SESSION['IS_LOGIN'])){
             <h4>Install App</h4>
             <p>From App Store or Google Play</p>
             <div class="row">
-                <img src="../ds/img/pay/app.jpg" alt="">
-                <img src="../ds/img/pay/play.jpg" alt="">
+                <img src="ds/img/pay/app.jpg" alt="">
+                <img src="ds/img/pay/play.jpg" alt="">
             </div>
             <p>Secured Payment Gateways</p>
-            <img src="../ds/img/pay/pay.png" alt="">
+            <img src="ds/img/pay/pay.png" alt="">
         </div>
 
         <div class="copyright">
@@ -507,6 +508,6 @@ if(!isset($_SESSION['IS_LOGIN'])){
 
     </footer>
 
-    <script src="../ds/script.js"></script>
+    <script src="ds/script.js"></script>
 </body>
 </html>
