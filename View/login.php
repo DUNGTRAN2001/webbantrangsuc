@@ -1,75 +1,11 @@
 
 <!--php-->
 <?php
-
-session_start();
-if(isset($_POST['signin'])){
-    $username = $_POST['username'];
-    $password = $_POST['password'];
-    if($username == '' || $password == ''){
-        echo "<script type='text/javascript'>alert('Please enter a valid username or password');</script>";
-    }else{
-        $link = mysqli_connect("localhost", "root", "") or die("Khong the ket noi den CSDL");
-        $check = mysqli_select_db($link, "qlbh");
-        $sql = "select * from users where UserName = '".$username."' and Password = '".$password."'";
-        $result = mysqli_query($link, $sql);
-        $user = mysqli_fetch_array($result);
-        if($user){
-            if(isset($_POST['remember'])){
-                setcookie('username',$username,time()+60*60*24*365);
-                setcookie('password',$password,time()+60*60*24*365);
-            }else{
-                setcookie('username',$username,30);
-                setcookie('password',$password,30);
-            }
-            $_SESSION['IS_LOGIN']='yes';
-            echo "<script type='text/javascript'>alert('Login success');</script>";
-            header('location:index.php');
-            die();
-        }else echo "<script type='text/javascript'>alert('Wrong username or password');</script>";
-        mysqli_free_result($result);
-        mysqli_close($link);
-    }
-}
-
-
-$username_cookie='';
-$password_cookie='';
-$set_remember="";
+include_once ("../Controller/Controller.php");
 if(isset($_COOKIE['username']) && isset($_COOKIE['password'])){
     $username_cookie=$_COOKIE['username'];
     $password_cookie=$_COOKIE['password'];
     $set_remember="checked='checked'";
-
-}
-
-if(isset($_POST['signup'])){
-    $username = $_POST['username'];
-    $password = $_POST['password'];
-    $re_pass = $_POST['re_pass'];
-    $email = $_POST['email'];
-    $phone= $_POST['phone'];
-    $address = $_POST['address'];
-
-    if(isset($_POST['agree-term'])){
-        if($username == '' and $password == '' and $re_pass == '' and $email == '' and $phone == '' and $address == ''){
-            echo "<script type='text/javascript'>alert('Please enter valid information');</script>";
-        }else{
-            if($re_pass != $password){
-                echo "<script type='text/javascript'>alert('Password incorrect');</script>";
-            }
-            else{
-                $link = mysqli_connect("localhost", "root", "") or die("Khong the ket noi den CSDL");
-                $check = mysqli_select_db($link, "qlbh");
-                $sql = "insert into users (	UserName, Password, Email, Phone, Address) values ('$username', '$password', '$email', '$phone', '$address')";
-                mysqli_query($link, $sql);
-                mysqli_close($link);
-                echo "<script type='text/javascript'>alert('Successful registration');</script>";
-            }
-        }
-    }else {
-        echo "<script type='text/javascript'>alert('Please agree to our terms');</script>";
-    }
 }
 ?>
 
@@ -93,18 +29,18 @@ if(isset($_POST['signup'])){
 <div class="main">
 
     <!-- Sign in  Form -->
-    <section id="2" style="margin-top: 16px">
+    <section id="sign_in" class="ddd" style="margin-top: 16px">
         <div class="container">
             <div class="signin-content">
                 <div class="signin-image" style="text-align: center">
                     <figure><img src="../ds/images/signin-image.jpg" alt="sing up image"></figure>
-                    <button onclick="SwitchSignUp()" style="background-color: white;
+                    <button onclick="SwitchSignUp(1)" style="background-color: white;
                         border: none; font-size: 14px; color: black">Create an account</button>
                 </div>
 
                 <div class="signin-form">
                     <h2 class="form-title">Sign In</h2>
-                    <form method="POST" class="register-form" id="login-form">
+                    <form method="POST" class="register-form" id="login-form" action="../Controller/Controller.php">
                         <div class="form-group">
                             <label for="your_name"><i class="zmdi zmdi-account material-icons-name"></i></label>
                             <input type="text" name="username" id="your_name" value="<?php echo $username_cookie;?>" placeholder="Username"/>
@@ -136,7 +72,7 @@ if(isset($_POST['signup'])){
     </section>
 
     <!-- Sign up form -->
-    <section id="1" style="margin-top: 150px">
+    <section id="sign_up" class="hide_form ddd" style="margin-top: 16px">
         <div class="container">
             <div class="signup-content">
                 <div class="signup-form">
@@ -183,7 +119,9 @@ if(isset($_POST['signup'])){
                 </div>
                 <div class="signup-image" style="text-align: center">
                     <figure><img src="../ds/images/signup-image.jpg" alt="sing up image"></figure>
-                    <a href="#" class="signup-image-link">I am already member</a>
+<!--                    <a href="#" class="signup-image-link">I am already member</a>-->
+                    <button onclick="SwitchSignUp(2)" style="background-color: white;
+                        border: none; font-size: 14px; color: black">Create an account</button>
                 </div>
             </div>
         </div>
@@ -196,5 +134,6 @@ if(isset($_POST['signup'])){
 <!-- JS -->
 <script src="../ds/vendor/jquery/jquery.min.js"></script>
 <script src="../ds/js/main.js"></script>
+<script></script>
 </body><!-- This templates was made by Colorlib (https://colorlib.com) -->
 </html>

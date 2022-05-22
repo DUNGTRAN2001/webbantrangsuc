@@ -1,100 +1,72 @@
-<header>
-    <link rel="stylesheet" href="ds/profileStyle.css">
-</header>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Chợ tốt demo1</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css" />
+
+    <link rel="stylesheet" href="../ds/fontawesome-free-6.1.1-web/fontawesome-free-6.1.1-web/css/all.min.css">
+
+    <link rel="stylesheet" href="../ds/style.css">
+    <link rel="stylesheet" href="../ds/profileStyle.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css" integrity="sha512-KfkfwYDsLkIlwQp6LFnl8zNdLGxu9YAA1QvwINks4PhcElQSvqcyVLLD9aMhXd13uQjoXtEKNosOWaZqXgel0g==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+
+
+</head>
 <body>
-<div class="container">
-    <div class="row gutters">
-        <div class="col-xl-3 col-lg-3 col-md-12 col-sm-12 col-12">
-            <div class="card h-100">
-                <div class="card-body">
-                    <div class="account-settings">
-                        <div class="user-profile">
-                            <div class="user-avatar">
-                                <img src="https://bootdey.com/img/Content/avatar/avatar1.png" alt="Maxwell Admin">
-                            </div>
-                            <h5 class="user-name">Yuki Hayashi</h5>
-                            <h6 class="user-email">yuki@Maxwell.com</h6>
-                        </div>
-                        <div class="about">
-                            <h5 class="mb-2 text-primary">About</h5>
-                            <p>I'm Yuki. Full Stack Designer I enjoy creating user-centric, delightful and human experiences.</p>
-                        </div>
-                    </div>
-                </div>
-            </div>
+    
+
+
+    <section id="header">
+        <a href="#"><img class="logo" src="../ds/img/chototlogo.png" alt=""></a>
+        <div>
+            <ul id="navbar">
+                <li><a href="index.php">Home</a></li>
+                <li><a href="shop.html">Shop</a></li>
+                <li><a href="blog.html">Blog</a></li>
+                <li><a href="about.html">About</a></li>
+                <li><a    href="contact.html">Contact</a></li>
+                <li><a href="search.html"><i class="fas fa-search" id="search-icon"></i></a></li>
+                <li id="lg-bag"><a href="cart.html"><i class="fa-solid fa-bag-shopping"></i></a></li>
+                <a href="#" id="close"><i class="fa-solid fa-xmark"></i></a>
+                <li><a href="login.php" class="active">Login</a></li>
+            </ul>
         </div>
-        <div class="col-xl-9 col-lg-9 col-md-12 col-sm-12 col-12">
-            <div class="card h-100">
-                <div class="card-body">
-                    <div class="row gutters">
-                        <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
-                            <h6 class="mb-3 text-primary">Personal Details</h6>
-                        </div>
-                        <div class="col-xl-6 col-lg-6 col-md-6 col-sm-6 col-12">
-                            <div class="form-group">
-                                <label for="fullName">Full Name</label>
-                                <input type="text" class="form-control" id="fullName" placeholder="Enter full name">
-                            </div>
-                        </div>
-                        <div class="col-xl-6 col-lg-6 col-md-6 col-sm-6 col-12">
-                            <div class="form-group">
-                                <label for="eMail">Email</label>
-                                <input type="email" class="form-control" id="eMail" placeholder="Enter email ID">
-                            </div>
-                        </div>
-                        <div class="col-xl-6 col-lg-6 col-md-6 col-sm-6 col-12">
-                            <div class="form-group">
-                                <label for="phone">Phone</label>
-                                <input type="text" class="form-control" id="phone" placeholder="Enter phone number">
-                            </div>
-                        </div>
-                        <div class="col-xl-6 col-lg-6 col-md-6 col-sm-6 col-12">
-                            <div class="form-group">
-                                <label for="website">Website URL</label>
-                                <input type="url" class="form-control" id="website" placeholder="Website url">
-                            </div>
-                        </div>
-                    </div>
-                    <div class="row gutters">
-                        <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
-                            <h6 class="mb-3 text-primary">Address</h6>
-                        </div>
-                        <div class="col-xl-6 col-lg-6 col-md-6 col-sm-6 col-12">
-                            <div class="form-group">
-                                <label for="Street">Street</label>
-                                <input type="name" class="form-control" id="Street" placeholder="Enter Street">
-                            </div>
-                        </div>
-                        <div class="col-xl-6 col-lg-6 col-md-6 col-sm-6 col-12">
-                            <div class="form-group">
-                                <label for="ciTy">City</label>
-                                <input type="name" class="form-control" id="ciTy" placeholder="Enter City">
-                            </div>
-                        </div>
-                        <div class="col-xl-6 col-lg-6 col-md-6 col-sm-6 col-12">
-                            <div class="form-group">
-                                <label for="sTate">State</label>
-                                <input type="text" class="form-control" id="sTate" placeholder="Enter State">
-                            </div>
-                        </div>
-                        <div class="col-xl-6 col-lg-6 col-md-6 col-sm-6 col-12">
-                            <div class="form-group">
-                                <label for="zIp">Zip Code</label>
-                                <input type="text" class="form-control" id="zIp" placeholder="Zip Code">
-                            </div>
-                        </div>
-                    </div>
-                    <div class="row gutters">
-                        <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
-                            <div class="text-right">
-                                <button type="button" id="submit" name="submit" class="btn btn-secondary">Cancel</button>
-                                <button type="button" id="submit" name="submit" class="btn btn-primary">Update</button>
-                            </div>
-                        </div>
-                    </div>
-                </div>
+    </section>
+    <div class="profile">
+        <div class="avt">
+            <img src="http://chiase24.com/wp-content/uploads/2022/02/Tong-hop-hinh-anh-avatar-de-thuong-lam-hinh-dai-dien-dep-nhat-35.png" alt="">
+        </div>
+        <div class="info">
+            <p class="title-admin">CHỈNH SỬA THÔNG TIN CÁ NHÂN</p>
+            <span>Email</span>
+            <input type="email" placeholder="email ...">
+            <br>
+            <span>Phone</span>
+            <input type="text" placeholder="Phone ...">
+            <br>
+            <span>Address</span>
+            <input type="text" placeholder="Address ...">
+            <br>
+            <span>User name</span>
+            <input type="text" placeholder="user name ...">
+            <div class="password-change">
+                <p >Change password</p>
+                <span>Current password</span>
+                <input type="password" placeholder="......">
+                <br>
+                <span>New password</span>
+                <input type="password" placeholder="......">
+                <br>
+                <span>Confirm password</span>
+                <input type="password" placeholder="......">
             </div>
+            <button class="submit">Save Changes</button>
         </div>
     </div>
-</div>
+    
+        
 </body>
+</html>
