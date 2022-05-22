@@ -1,13 +1,6 @@
 
 <!--php-->
-<?php
-include_once ("../Controller/Controller.php");
-if(isset($_COOKIE['username']) && isset($_COOKIE['password'])){
-    $username_cookie=$_COOKIE['username'];
-    $password_cookie=$_COOKIE['password'];
-    $set_remember="checked='checked'";
-}
-?>
+
 
 
 <!DOCTYPE html>
@@ -43,15 +36,15 @@ if(isset($_COOKIE['username']) && isset($_COOKIE['password'])){
                     <form method="POST" class="register-form" id="login-form" action="../Controller/Controller.php">
                         <div class="form-group">
                             <label for="your_name"><i class="zmdi zmdi-account material-icons-name"></i></label>
-                            <input type="text" name="username" id="your_name" value="<?php echo $username_cookie;?>" placeholder="Username"/>
+                            <input type="text" name="username" id="your_name" value="<?php if(isset($_COOKIE['username'])){echo $_COOKIE['username'];} ?>" placeholder="Username"/>
                         </div>
                         <div class="form-group">
                             <label for="your_pass"><i class="zmdi zmdi-lock"></i></label>
-                            <input type="password" name="password" id="your_pass" value="<?php echo $password_cookie;?>" placeholder="Password"/>
+                            <input type="password" name="password" id="your_pass" value="<?php if(isset($_COOKIE['password'])){echo $_COOKIE['password'];} ?>" placeholder="Password"/>
                         </div>
                         <div class="form-group">
                             <input type="checkbox" name="remember" id="remember" class="agree-term"
-                                <?php echo $set_remember?>/>
+                                <?php if (isset($_COOKIE['username'])) echo "checked"?>/>
                             <label for="remember" class="label-agree-term"><span><span></span></span>Remember me</label>
                         </div>
                         <div class="form-group form-button">

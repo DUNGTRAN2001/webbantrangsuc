@@ -17,7 +17,13 @@
 <body>
     
     <?php
-        include_once ("../Controller/Controller.php")
+        include_once ("../Controller/Controller.php");
+        $id = $_COOKIE['id'];
+        $user = getUserById($id);
+    if(!empty($_GET['message'])) {
+        $message = $_GET['message'];
+        echo "<script type='text/javascript'>alert('".$message."');</script>";
+    }
     ?>
 
     <section id="header">
@@ -49,32 +55,34 @@
         <div class="avt">
             <img src="http://chiase24.com/wp-content/uploads/2022/02/Tong-hop-hinh-anh-avatar-de-thuong-lam-hinh-dai-dien-dep-nhat-35.png" alt="">
         </div>
-        <div class="info">
-            <p class="title">CHỈNH SỬA THÔNG TIN CÁ NHÂN</p>
-            <span>Email</span>
-            <input type="email" placeholder="email ...">
-            <br>
-            <span>Phone</span>
-            <input type="text" placeholder="Phone ...">
-            <br>
-            <span>Address</span>
-            <input type="text" placeholder="Address ...">
-            <br>
-            <span>User name</span>
-            <input type="text" placeholder="user name ...">
-            <div class="password-change">
-                <p >Change password</p>
-                <span>Current password</span>
-                <input type="password" placeholder="......">
+        <form method="post" action="../Controller/Controller.php">
+            <div class="info">
+                <p class="title">CHỈNH SỬA THÔNG TIN CÁ NHÂN</p>
+                <span>Email</span>
+                <input type="email" placeholder="email ..." value="<?php echo $user->getEmail()?>" name="email">
                 <br>
-                <span>New password</span>
-                <input type="password" placeholder="......">
+                <span>Phone</span>
+                <input type="text" placeholder="Phone ..." value="<?php echo $user->getPhone()?>" name="phone">
                 <br>
-                <span>Confirm password</span>
-                <input type="password" placeholder="......">
+                <span>Address</span>
+                <input type="text" placeholder="Address ..." value="<?php echo $user->getAddress()?>" name="address">
+                <br>
+                <span>User name</span>
+                <input type="text" placeholder="user name ..." value="<?php echo $user->getNameUser()?>" name="username">
+                <div class="password-change">
+                    <p >Change password</p>
+                    <span>Current password</span>
+                    <input type="password" placeholder="......" name="password">
+                    <br>
+                    <span>New password</span>
+                    <input type="password" placeholder="......" name="newPass">
+                    <br>
+                    <span>Confirm password</span>
+                    <input type="password" placeholder="......" name="confirmPass">
+                </div>
+                <button class="submit" type="submit" name="saveChange" id="saveChange">Save Changes</button>
             </div>
-            <button class="submit">Save Changes</button>
-        </div>
+        </form>
     </div>
     
         
