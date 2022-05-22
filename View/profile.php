@@ -11,37 +11,27 @@
 
     <link rel="stylesheet" href="../ds/style.css">
     <link rel="stylesheet" href="../ds/profileStyle.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css" integrity="sha512-KfkfwYDsLkIlwQp6LFnl8zNdLGxu9YAA1QvwINks4PhcElQSvqcyVLLD9aMhXd13uQjoXtEKNosOWaZqXgel0g==" crossorigin="anonymous" referrerpolicy="no-referrer" />
 
 
 </head>
 <body>
     
-    <?php
-        include_once ("../Controller/Controller.php")
-    ?>
+
 
     <section id="header">
         <a href="#"><img class="logo" src="../ds/img/chototlogo.png" alt=""></a>
         <div>
             <ul id="navbar">
-                <li><a href="../index.php">Home</a></li>
-                <li><a href="../View/shop.php">Shop</a></li>
-                <li><a href="../View/blog.html">Blog</a></li>
-                <li><a href="../View/about.html">About</a></li>
-                <li><a href="../View/contact.html">Contact</a></li>
-                <li><a href="../View/search.html"><i class="fas fa-search" id="search-icon"></i></a></li>
-                <li id="lg-bag"><a href="../View/cart.html"><i class="fa-solid fa-bag-shopping"></i></a></li>
+                <li><a href="index.php">Home</a></li>
+                <li><a href="shop.html">Shop</a></li>
+                <li><a href="blog.html">Blog</a></li>
+                <li><a href="about.html">About</a></li>
+                <li><a    href="contact.html">Contact</a></li>
+                <li><a href="search.html"><i class="fas fa-search" id="search-icon"></i></a></li>
+                <li id="lg-bag"><a href="cart.html"><i class="fa-solid fa-bag-shopping"></i></a></li>
                 <a href="#" id="close"><i class="fa-solid fa-xmark"></i></a>
-                <nav role="navigation">
-                    <ul>
-                        <li><a href="#"><i class="fa-solid fa-user"></i></a>
-                            <ul class="dropdown">
-                                <li><a href="profile.php"><i class="fa-solid fa-gears">Setting</i></a></li>
-                                <li><a href="../View/logout.php"><i class="fa-solid fa-right-from-bracket">Logout</i></a></li>
-                            </ul>
-                        </li>
-                    </ul>
-                </nav>
+                <li><a href="login.php" class="active">Login</a></li>
             </ul>
         </div>
     </section>
@@ -50,7 +40,7 @@
             <img src="http://chiase24.com/wp-content/uploads/2022/02/Tong-hop-hinh-anh-avatar-de-thuong-lam-hinh-dai-dien-dep-nhat-35.png" alt="">
         </div>
         <div class="info">
-            <p class="title">CHỈNH SỬA THÔNG TIN CÁ NHÂN</p>
+            <p class="title-admin">CHỈNH SỬA THÔNG TIN CÁ NHÂN</p>
             <span>Email</span>
             <input type="email" placeholder="email ...">
             <br>
