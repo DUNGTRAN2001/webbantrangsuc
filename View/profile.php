@@ -16,14 +16,16 @@
 </head>
 <body>
     
-
+    <?php
+        include_once ("../Controller/Controller.php")
+    ?>
 
     <section id="header">
         <a href="#"><img class="logo" src="../ds/img/chototlogo.png" alt=""></a>
         <div>
             <ul id="navbar">
                 <li><a href="../index.php">Home</a></li>
-                <li><a href="../View/shop.html">Shop</a></li>
+                <li><a href="../View/shop.php">Shop</a></li>
                 <li><a href="../View/blog.html">Blog</a></li>
                 <li><a href="../View/about.html">About</a></li>
                 <li><a href="../View/contact.html">Contact</a></li>
@@ -34,7 +36,7 @@
                     <ul>
                         <li><a href="#"><i class="fa-solid fa-user"></i></a>
                             <ul class="dropdown">
-                                <li><a href="../View/profile.html"><i class="fa-solid fa-gears">Setting</i></a></li>
+                                <li><a href="profile.php"><i class="fa-solid fa-gears">Setting</i></a></li>
                                 <li><a href="../View/logout.php"><i class="fa-solid fa-right-from-bracket">Logout</i></a></li>
                             </ul>
                         </li>

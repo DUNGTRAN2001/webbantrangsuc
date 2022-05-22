@@ -21,7 +21,7 @@
         <a href="#"><img class="logo" src="../ds/img/chototlogo.png" alt=""></a>
         <div>
             <ul id="navbar">
-                <li><a href="index.php">Home</a></li>
+                <li><a href="../index.php">Home</a></li>
                 <li><a  class="active" href="shop.php">Shop</a></li>
                 <li><a href="blog.html">Blog</a></li>
                 <li><a href="about.html">About</a></li>
@@ -29,7 +29,16 @@
                 <li><a href="search.html"><i class="fas fa-search" id="search-icon"></i></a></li>
                 <li id="lg-bag"><a href="cart.html"><i class="fa-solid fa-bag-shopping"></i></a></li>
                 <a href="#" id="close"><i class="fa-solid fa-xmark"></i></a>
-                <li><a href="login.php">Login</a></li>
+                <nav role="navigation">
+                    <ul>
+                        <li><a href="#"><i class="fa-solid fa-user"></i></a>
+                            <ul class="dropdown">
+                                <li><a href="profile.php"><i class="fa-solid fa-gears">Setting</i></a></li>
+                                <li><a href="../View/logout.php"><i class="fa-solid fa-right-from-bracket">Logout</i></a></li>
+                            </ul>
+                        </li>
+                    </ul>
+                </nav>
             </ul>
         </div>
 
@@ -53,17 +62,15 @@
         <div class="pro-container">
             <!-- Lệnh onclick bấm vào ra trang details -->
             <?php
-            include_once ("../Model/Model.php");
-            $model = new Model();
-            $listProducts = $model->getAllProducts();
+            include_once ("../Controller/Controller.php");
             if(isset($listProducts)){
                 foreach ($listProducts as $value){
                     ?>
-                    <div class="pro" onclick="window.location.href='sproduct.html';">
+                    <div class="pro" onclick="location.href='../View/sproduct.php?id='+<?php echo $value->getIdProduct() ?>;"&nbsp;>
                         <img src="http://drive.google.com/uc?export=view&id=<?php echo substr($value->getImageProduct(), 32, 33)?>" alt="">
                         <div class="des">
                             <span>adidas</span>
-                            <h5>Cartoon Astronaut T-Shirts</h5>
+                            <h5><?php echo $value->getNameProduct()?></h5>
                             <div class="star">
                                 <i class="fa-solid fa-star"></i>
                                 <i class="fa-solid fa-star"></i>
@@ -71,7 +78,7 @@
                                 <i class="fa-solid fa-star"></i>
                                 <i class="fa-solid fa-star-half-stroke"></i>
                             </div>
-                            <h4>$78</h4>
+                            <h4><?php echo number_format($value->getPrice(), 3, '.', '.')?>VND</h4>
                         </div>
                         <a href="#"><i class="fa-solid fa-cart-shopping shopping"></i></a>
                     </div>
