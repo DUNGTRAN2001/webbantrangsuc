@@ -14,21 +14,34 @@
 
 </head>
 <body>
-    
 
+    <?php
+        include_once ("../Controller/Controller.php");
+        $product = getProductById($_GET['id'])
+    ?>
 
     <section id="header">
         <a href="#"><img class="logo" src="../ds/img/chototlogo.png" alt=""></a>
         <div>
             <ul id="navbar">
                 <li><a href="../index.php">Home</a></li>
-                <li><a  class="active" href="shop.html">Shop</a></li>
-                <li><a href="blog.html">Blog</a></li>
-                <li><a href="about.html">About</a></li>
-                <li><a href="contact.html">Contact</a></li>
-                <li id="lg-bag"><a href="cart.html"><i class="fa-solid fa-bag-shopping"></i></a></li>
+                <li><a href="../View/shop.php">Shop</a></li>
+                <li><a href="../View/blog.html">Blog</a></li>
+                <li><a href="../View/about.html">About</a></li>
+                <li><a href="../View/contact.html">Contact</a></li>
+                <li><a href="../View/search.html"><i class="fas fa-search" id="search-icon"></i></a></li>
+                <li id="lg-bag"><a href="../View/cart.html"><i class="fa-solid fa-bag-shopping"></i></a></li>
                 <a href="#" id="close"><i class="fa-solid fa-xmark"></i></a>
-                <li><a href="login.php">Login</a></li>
+                <nav role="navigation">
+                    <ul>
+                        <li><a href="#"><i class="fa-solid fa-user"></i></a>
+                            <ul class="dropdown">
+                                <li><a href="profile.php"><i class="fa-solid fa-gears">Setting</i></a></li>
+                                <li><a href="../View/logout.php"><i class="fa-solid fa-right-from-bracket">Logout</i></a></li>
+                            </ul>
+                        </li>
+                    </ul>
+                </nav>
             </ul>
         </div>
 
@@ -42,7 +55,7 @@
     <section id="prodetails" class="section-p1">
 
         <div class="single-pro-image">
-            <img src="../ds/img/products/f1.jpg" width="100%" id="MainImg" alt="">
+            <img src="http://drive.google.com/uc?export=view&id=<?php echo substr($product->getImageProduct(), 32, 33)?>" alt="">
 
             <div class="small-img-group">
 
@@ -64,9 +77,9 @@
         </div>
 
         <div class="single-pro-details">
-            <h6>Home / T-Shirts</h6>
-            <h4>Men's Fashion T Shirts</h4>
-            <h2>$139.00</h2>
+            <h6>Home / <?php echo $product->getMaterialName() ?></h6>
+            <h4><?php echo $product->getNameProduct() ?></h4>
+            <h2><?php echo number_format($product->getPrice(), 3, '.', '.')?>VND</h2>
             <select>
             <option>Select Size</option>
             <option>XL</option>
@@ -74,11 +87,12 @@
             <option>Small</option>
             <option>Large</option>
             </select>
-            <input type="number" value="1">
-            <button class="normal">Add to cart</button>
+            <form method="post" action="../Controller/Controller.php">
+                <input type="number" value="1">
+                <button class="normal">Add to cart</button>
+            </form>
             <h4>Product Details</h4>
-            <span> The Gildan Ultra Cotton T-Shirt is made from a substantial 6.0 oz. per sq. yd. fabric 
-                contructted from 100% Cotton , this classic fit preshrunk jersey knit provides unmatched comfor  </span>
+            <span> <?php echo $product->getDescription() ?> </span>
         </div>
 
     </section>
