@@ -16,8 +16,13 @@
 <body>
 
     <?php
-        include_once ("../Controller/Controller.php");
-        $product = getProductById($_GET['id'])
+        include_once ($_COOKIE['path']. "/Controller/Controller.php");
+        $id = $_GET['id'];
+        $product = getProductById($id);
+        if(!empty($_GET['message'])) {
+            $message = $_GET['message'];
+            echo "<script type='text/javascript'>alert('".$message."');</script>";
+        }
     ?>
 
     <section id="header">
@@ -30,7 +35,7 @@
                 <li><a href="../View/about.html">About</a></li>
                 <li><a href="../View/contact.html">Contact</a></li>
                 <li><a href="../View/search.html"><i class="fas fa-search" id="search-icon"></i></a></li>
-                <li id="lg-bag"><a href="../View/cart.html"><i class="fa-solid fa-bag-shopping"></i></a></li>
+                <li id="lg-bag"><a href="cart.php"><i class="fa-solid fa-bag-shopping"></i></a></li>
                 <a href="#" id="close"><i class="fa-solid fa-xmark"></i></a>
                 <nav role="navigation">
                     <ul>
@@ -47,7 +52,7 @@
 
         <!--reponsive thanh mở hiện trên điện thoại ,còn máy tính thì ko -->
         <div id="mobile">
-            <a href="cart.html"><i class="fa-solid fa-bag-shopping"></i></a>
+            <a href="cart.php"><i class="fa-solid fa-bag-shopping"></i></a>
             <i id="bar" class="fa-solid fa-outdent"></i>
         </div>
     </section>
@@ -80,16 +85,12 @@
             <h6>Home / <?php echo $product->getMaterialName() ?></h6>
             <h4><?php echo $product->getNameProduct() ?></h4>
             <h2><?php echo number_format($product->getPrice(), 3, '.', '.')?>VND</h2>
-            <select>
-            <option>Select Size</option>
-            <option>XL</option>
-            <option>XXL</option>
-            <option>Small</option>
-            <option>Large</option>
-            </select>
+
             <form method="post" action="../Controller/Controller.php">
-                <input type="number" value="1">
-                <button class="normal">Add to cart</button>
+                <input type="number" value="1" min="1" name="quantity">
+                <input type="hidden" value="<?php echo $id?> " name="productId">
+                <input type="hidden" value="<?php echo $product->getPrice()?> " name="price">
+                <button class="normal" type="submit" name="add" id="add">Add to cart</button>
             </form>
             <h4>Product Details</h4>
             <span> <?php echo $product->getDescription() ?> </span>
@@ -103,73 +104,34 @@
         <p>Summer Collection New Morden Design</p>
         <div class="pro-container">
             
-            <div class="pro">
-                <img src="../ds/img/products/n1.jpg" alt="">
-                <div class="des">
-                    <span>adidas</span>
-                    <h5>Cartoon Astronaut T-Shirts</h5>
-                    <div class="star">
-                        <i class="fa-solid fa-star"></i>
-                        <i class="fa-solid fa-star"></i>
-                        <i class="fa-solid fa-star"></i>
-                        <i class="fa-solid fa-star"></i>
-                        <i class="fa-solid fa-star-half-stroke"></i>
-                    </div>
-                    <h4>$78</h4>
-                </div>
-                <a href="#"><i class="fa-solid fa-cart-shopping shopping"></i></a>
-            </div>
+            <?php
 
-            <div class="pro">
-                <img src="../ds/img/products/n2.jpg" alt="">
-                <div class="des">
-                    <span>adidas</span>
-                    <h5>Cartoon Astronaut T-Shirts</h5>
-                    <div class="star">
-                        <i class="fa-solid fa-star"></i>
-                        <i class="fa-solid fa-star"></i>
-                        <i class="fa-solid fa-star"></i>
-                        <i class="fa-solid fa-star"></i>
-                        <i class="fa-solid fa-star-half-stroke"></i>
+            if(isset($listProducts)){
+                shuffle($listProducts);
+                $result = array_slice($listProducts, 0, 4);
+                foreach ($result as $value){
+                    ?>
+                    <div class="pro" onclick="location.href='View/sproduct.php?id='+<?php echo $value->getIdProduct() ?>;"&nbsp;>
+                        <img src="http://drive.google.com/uc?export=view&id=<?php echo substr($value->getImageProduct(), 32, 33)?>" alt="">
+                        <div class="des">
+                            <span>adidas</span>
+                            <h5><?php echo $value->getNameProduct()?></h5>
+                            <div class="star">
+                                <i class="fa-solid fa-star"></i>
+                                <i class="fa-solid fa-star"></i>
+                                <i class="fa-solid fa-star"></i>
+                                <i class="fa-solid fa-star"></i>
+                                <i class="fa-solid fa-star-half-stroke"></i>
+                            </div>
+                            <h4><?php echo number_format($value->getPrice(), 3, '.', '.')?>VND</h4>
+                        </div>
+                        <a href="#"><i class="fa-solid fa-cart-shopping shopping"></i></a>
                     </div>
-                    <h4>$78</h4>
-                </div>
-                <a href="#"><i class="fa-solid fa-cart-shopping shopping"></i></a>
-            </div>
+                    <?php
+                }
+            }
 
-            <div class="pro">
-                <img src="../ds/img/products/n3.jpg" alt="">
-                <div class="des">
-                    <span>adidas</span>
-                    <h5>Cartoon Astronaut T-Shirts</h5>
-                    <div class="star">
-                        <i class="fa-solid fa-star"></i>
-                        <i class="fa-solid fa-star"></i>
-                        <i class="fa-solid fa-star"></i>
-                        <i class="fa-solid fa-star"></i>
-                        <i class="fa-solid fa-star-half-stroke"></i>
-                    </div>
-                    <h4>$78</h4>
-                </div>
-                <a href="#"><i class="fa-solid fa-cart-shopping shopping"></i></a>
-            </div>
-
-            <div class="pro">
-                <img src="../ds/img/products/n4.jpg" alt="">
-                <div class="des">
-                    <span>adidas</span>
-                    <h5>Cartoon Astronaut T-Shirts</h5>
-                    <div class="star">
-                        <i class="fa-solid fa-star"></i>
-                        <i class="fa-solid fa-star"></i>
-                        <i class="fa-solid fa-star"></i>
-                        <i class="fa-solid fa-star"></i>
-                        <i class="fa-solid fa-star-half-stroke"></i>
-                    </div>
-                    <h4>$78</h4>
-                </div>
-                <a href="#"><i class="fa-solid fa-cart-shopping shopping"></i></a>
-            </div>
+            ?>
             
         </div>
     </section>

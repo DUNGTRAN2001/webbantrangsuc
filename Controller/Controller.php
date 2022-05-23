@@ -1,8 +1,11 @@
 <?php
-include_once("../Model/Model.php");
+$session = session_id();
+if(empty($session)){
+    session_start();
+}
+include_once($_COOKIE['path'] . '/Model/Model.php');
 
 $listProducts = Model::getInstance()->getAllProducts();
-session_start();
 
 $username_cookie = '';
 $password_cookie = '';
@@ -99,19 +102,19 @@ if (isset($_POST['saveChange'])) {
             if ($user->getPassword() != $password) {
                 header('location:../View/profile.php?message=Password does not match!');
             } else {
-                if($username != $user->getNameUser()) {
+                if ($username != $user->getNameUser()) {
                     setcookie('username', $username, time() + 60 * 60 * 24 * 365, '/');
                 }
-                if($newPass != $user->getPassword()) {
+                if ($newPass != $user->getPassword()) {
                     setcookie('password', $newPass, time() + 60 * 60 * 24 * 365, '/');
                 }
-                $sql = "UPDATE `users` SET `UserName` = '" . $username . "', `Password` = '".$newPass."', `Email` = '" . $email . "', `Phone` = '" . $phone . "', `Address` = '" . $address . "' WHERE `UserId` ='" . $_COOKIE['id'] . "'";
+                $sql = "UPDATE `users` SET `UserName` = '" . $username . "', `Password` = '" . $newPass . "', `Email` = '" . $email . "', `Phone` = '" . $phone . "', `Address` = '" . $address . "' WHERE `UserId` ='" . $_COOKIE['id'] . "'";
                 Model::getInstance()->excuteData($sql);
                 header('location:../View/profile.php?message=Successful update!');
             }
         }
     } elseif (!$password && !$newPass && !$confirmPass) {
-        if($username != $user->getNameUser())
+        if ($username != $user->getNameUser())
             setcookie('username', $username, time() + 60 * 60 * 24 * 365, '/');
         $sql = "UPDATE `users` SET `UserName` = '" . $username . "', `Email` = '" . $email . "', `Phone` = '" . $phone . "', `Address` = '" . $address . "' WHERE `UserId` ='" . $_COOKIE['id'] . "'";
         Model::getInstance()->excuteData($sql);
@@ -119,4 +122,62 @@ if (isset($_POST['saveChange'])) {
     } else {
         header('location:../View/profile.php?message=Password cannot be blank!');
     }
+}
+
+if (isset($_POST['add'])) {
+    $quantity = $_POST['quantity'];
+    $productId = $_POST['productId'];
+    $price = $_POST['price'];
+
+    $sql = "select * from orderdetail where Productid = '" . $productId . "' and OrderId = '".$_COOKIE['orderId']."'";
+    $result = Model::getInstance()->excuteData($sql);
+    if($result->fetch_row()){
+
+        $sql1 = "UPDATE orderdetail SET Quantity = Quantity + 1, Price = ".$price." * Quantity WHERE Productid ='" . $productId . "'";
+        Model::getInstance()->excuteData($sql1);
+    }else{
+
+        $sql2 = "insert into orderdetail (OrderId, Productid, Quantity, Price) values ('".$_COOKIE['orderId']."', '$productId', '$quantity', '".$price."')";
+        Model::getInstance()->excuteData($sql2);
+
+    }
+    header('location:../View/sproduct.php?id=' . $productId . '&message=Add cart successfully!');
+
+}
+
+function checkOrder($UserId)
+{
+    $sql = "select * from orders where UserId = '" . $UserId . "' and status = '0'";
+    $result = Model::getInstance()->excuteData($sql);
+    if (mysqli_num_rows($result)>0) {
+        $order = mysqli_fetch_array($result);
+        setcookie('orderId', $order[0], time() + 60 * 60 * 24 * 365, '/');
+    } else {
+        $date = date("Y-m-d");
+        $sql = "insert into orders (UserId, Note, CreateDate, PaymentId , status) values ('$UserId', 'Hàng dễ vỡ', '$date', '1', '0');";
+        Model::getInstance()->excuteData($sql);
+        $sql = "SELECT * FROM orders WHERE OrderId  = (SELECT MAX(OrderId) FROM orders);";
+        $result = Model::getInstance()->excuteData($sql);
+        $order = mysqli_fetch_array($result);
+        setcookie('orderId', $order[0], time() + 60 * 60 * 24 * 365, '/');
+    }
+}
+
+function checkOrderId($oderId){
+    $sql = "select * from orders where OrderId  = '" . $oderId . "' and status = '0'";
+    $result = Model::getInstance()->excuteData($sql);
+    if($result->fetch_row()){
+        return true;
+    }
+    return false;
+}
+function getlistOrder(){
+    return Model::getInstance()->getAllOrderDetail($_COOKIE['orderId']);
+}
+
+if(isset($_POST['payment'])){
+    $sql = "UPDATE orders SET status = '1' WHERE OrderId ='" . $_COOKIE['orderId'] . "'";
+    Model::getInstance()->excuteData($sql);
+    checkOrder($_COOKIE['id']);
+    header('location:../View/cart.php?message=Payment success!');
 }

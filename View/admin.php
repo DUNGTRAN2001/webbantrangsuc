@@ -25,7 +25,7 @@
                 <li><a href="../View/about.html">About</a></li>
                 <li><a href="../View/contact.html">Contact</a></li>
                 <li><a href="../View/search.html"><i class="fas fa-search" id="search-icon"></i></a></li>
-                <li id="lg-bag"><a href="../View/cart.html"><i class="fa-solid fa-bag-shopping"></i></a></li>
+                <li id="lg-bag"><a href="cart.php"><i class="fa-solid fa-bag-shopping"></i></a></li>
                 <a href="#" id="close"><i class="fa-solid fa-xmark"></i></a>
                 <nav role="navigation">
                     <ul>
@@ -42,7 +42,7 @@
     </section>
     <div class="content">
         <div class="category">
-            <a href="admin.html"><p class="title-admin">Admin Dashboard</p></a>
+            <a href="admin.php"><p class="title-admin">Admin Dashboard</p></a>
             <ul class="category-management">
                 <li class="manage"><a href="user.html">User management <i class="fa-solid fa-user"></i></a></li>
                 <li class="manage"><a href="oder.html">Order management <i class="fa-solid fa-cart-shopping"></i></a></li>

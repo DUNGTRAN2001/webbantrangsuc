@@ -1,7 +1,9 @@
 <?php
 
-include_once ("../Model/Product.php");
-include_once ("../Model/User.php");
+include_once ($_COOKIE['path']. '/Model/Product.php');
+include_once ($_COOKIE['path']. '/Model/User.php');
+include_once ($_COOKIE['path']. '/Model/OrderDetail.php');
+
 class Model
 {
     private static $instance;
@@ -63,6 +65,21 @@ class Model
             }
         }catch (Exception $exception){
             echo 'Caught exception: ',  $exception->getMessage(), "\n";
+        }
+    }
+
+    public function getAllOrderDetail($orderId){
+        $slq = "select * from orderdetail where OrderId = '".$orderId."'";
+        $result = $this->excuteData($slq);
+        $i = 0;
+        $listOrder = [];
+        if ($result) {
+            while ($row = mysqli_fetch_array($result)) {
+                $listOrder[$i++] = new OrderDetail($row[0], $row[1], $row[2], $row[3]);
+            }
+            return $listOrder;
+        }else{
+            return null;
         }
     }
 
