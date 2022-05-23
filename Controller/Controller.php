@@ -27,7 +27,12 @@ if (isset($_POST['signin'])) {
                 setcookie('password', "", time() + 60 * 60 * 24 * 365, '/');
             }
             $_SESSION['IS_LOGIN'] = 'yes';
-            header('location:../index.php');
+            if($user[0] == 1){
+                header('location:../View/admin.php');
+            }else{
+                header('location:../index.php');
+            }
+
         } else {
             echo "<script type='text/javascript'>alert('Wrong username or password');</script>";
             include_once("../View/login.php");
@@ -119,4 +124,8 @@ if (isset($_POST['saveChange'])) {
     } else {
         header('location:../View/profile.php?message=Password cannot be blank!');
     }
+}
+
+function getAllUsers(){
+    return Model::getInstance()->getAllUser();
 }
