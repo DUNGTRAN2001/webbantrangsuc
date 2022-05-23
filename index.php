@@ -1,5 +1,6 @@
 <?php
 session_start();
+setcookie('path', __DIR__, time() + 60 * 60 * 24 * 365, '/');
 if(!isset($_SESSION['IS_LOGIN'])){
     header('location:View/login.php');
     die();
@@ -32,13 +33,13 @@ if(!isset($_SESSION['IS_LOGIN'])){
             <ul id="navbar">
                 <li><a class="active" href="index.php">Home</a></li>
                 <li><a href="View/shop.php">Shop</a></li>
-                <li><a href="View/blog.html">Blog</a></li>
-                <li><a href="View/about.html">About</a></li>
-                <li><a href="View/contact.html">Contact</a></li>
-                <li><a href="View/search.html"><i class="fas fa-search" id="search-icon"></i></a></li>
+                <li><a href="View/blog.php">Blog</a></li>
+                <li><a href="View/about.php">About</a></li>
+                <li><a href="View/contact.php">Contact</a></li>
 
 
-                <li id="lg-bag"><a href="View/cart.html"><i class="fa-solid fa-bag-shopping"></i></a></li>
+
+                <li id="lg-bag"><a href="View/cart.php"><i class="fa-solid fa-bag-shopping"></i></a></li>
                 <a href="#" id="close"><i class="fa-solid fa-xmark"></i></a>
                 <nav role="navigation">
                     <ul>
@@ -55,7 +56,7 @@ if(!isset($_SESSION['IS_LOGIN'])){
 
         <!--reponsive thanh mở hiện trên điện thoại ,còn máy tính thì ko -->
         <div id="mobile">
-            <a href="View/cart.html"><i class="fa-solid fa-bag-shopping"></i></a>
+            <a href="View/cart.php"><i class="fa-solid fa-bag-shopping"></i></a>
             <i id="bar" class="fa-solid fa-outdent"></i>
         </div>
     </section>
@@ -99,144 +100,37 @@ if(!isset($_SESSION['IS_LOGIN'])){
 
     <section id="product1"  class="section-p1">
         <h2>Featured Products</h2>
-        <p>Summer Collection New Morden Design</p>
+        <p>Summer Collection New Modern Design</p>
         <div class="pro-container">
-            <div class="pro" onclick="window.location.href='sproduct.html';">  
-                <img src="ds/img/products/f1.jpg" alt="">
-                <div class="des">
-                    <span>adidas</span>
-                    <h5>Cartoon Astronaut T-Shirts</h5>
-                    <div class="star">
-                        <i class="fa-solid fa-star"></i>
-                        <i class="fa-solid fa-star"></i>
-                        <i class="fa-solid fa-star"></i>
-                        <i class="fa-solid fa-star"></i>
-                        <i class="fa-solid fa-star-half-stroke"></i>
+            <?php
+            include_once ("Controller/Controller.php");
+            checkOrder($_COOKIE['id']);
+            if(isset($listProducts)){
+                shuffle($listProducts);
+                $result = array_slice($listProducts, 0, 8);
+                foreach ($result as $value){
+                    ?>
+                    <div class="pro" onclick="location.href='View/sproduct.php?id='+<?php echo $value->getIdProduct() ?>;"&nbsp;>
+                        <img src="http://drive.google.com/uc?export=view&id=<?php echo substr($value->getImageProduct(), 32, 33)?>" alt="">
+                        <div class="des">
+                            <span>adidas</span>
+                            <h5><?php echo $value->getNameProduct()?></h5>
+                            <div class="star">
+                                <i class="fa-solid fa-star"></i>
+                                <i class="fa-solid fa-star"></i>
+                                <i class="fa-solid fa-star"></i>
+                                <i class="fa-solid fa-star"></i>
+                                <i class="fa-solid fa-star-half-stroke"></i>
+                            </div>
+                            <h4><?php echo number_format($value->getPrice(), 3, '.', '.')?>VND</h4>
+                        </div>
+                        <a href="#"><i class="fa-solid fa-cart-shopping shopping"></i></a>
                     </div>
-                    <h4>$78</h4>
-                </div>
-                <a href="#"><i class="fa-solid fa-cart-shopping shopping"></i></a>
+                    <?php
+                }
+            }
 
-            </div>
-            <div class="pro" onclick="window.location.href='sproduct.html';">
-                <img src="ds/img/products/f2.jpg" alt="">
-                <div class="des">
-                    <span>adidas</span>
-                    <h5>Cartoon Astronaut T-Shirts</h5>
-                    <div class="star">
-                        <i class="fa-solid fa-star"></i>
-                        <i class="fa-solid fa-star"></i>
-                        <i class="fa-solid fa-star"></i>
-                        <i class="fa-solid fa-star"></i>
-                        <i class="fa-solid fa-star-half-stroke"></i>
-                    </div>
-                    <h4>$78</h4>
-                </div>
-                <a href="#"><i class="fa-solid fa-cart-shopping shopping"></i></a>
-
-            </div>
-            <div class="pro" onclick="window.location.href='sproduct.html';">
-                <img src="ds/img/products/f3.jpg" alt="">
-                <div class="des">
-                    <span>adidas</span>
-                    <h5>Cartoon Astronaut T-Shirts</h5>
-                    <div class="star">
-                        <i class="fa-solid fa-star"></i>
-                        <i class="fa-solid fa-star"></i>
-                        <i class="fa-solid fa-star"></i>
-                        <i class="fa-solid fa-star"></i>
-                        <i class="fa-solid fa-star-half-stroke"></i>
-                    </div>
-                    <h4>$78</h4>
-                </div>
-                <a href="#"><i class="fa-solid fa-cart-shopping shopping"></i></a>
-
-            </div>
-            <div class="pro" onclick="window.location.href='sproduct.html';">
-                <img src="ds/img/products/f4.jpg" alt="">
-                <div class="des">
-                    <span>adidas</span>
-                    <h5>Cartoon Astronaut T-Shirts</h5>
-                    <div class="star">
-                        <i class="fa-solid fa-star"></i>
-                        <i class="fa-solid fa-star"></i>
-                        <i class="fa-solid fa-star"></i>
-                        <i class="fa-solid fa-star"></i>
-                        <i class="fa-solid fa-star-half-stroke"></i>
-                    </div>
-                    <h4>$78</h4>
-                </div>
-                <a href="#"><i class="fa-solid fa-cart-shopping shopping"></i></a>
-
-            </div>
-            <div class="pro" onclick="window.location.href='sproduct.html';">
-                <img src="ds/img/products/f5.jpg" alt="">
-                <div class="des">
-                    <span>adidas</span>
-                    <h5>Cartoon Astronaut T-Shirts</h5>
-                    <div class="star">
-                        <i class="fa-solid fa-star"></i>
-                        <i class="fa-solid fa-star"></i>
-                        <i class="fa-solid fa-star"></i>
-                        <i class="fa-solid fa-star"></i>
-                        <i class="fa-solid fa-star-half-stroke"></i>
-                    </div>
-                    <h4>$78</h4>
-                </div>
-                <a href="#"><i class="fa-solid fa-cart-shopping shopping"></i></a>
-
-            </div>
-            <div class="pro" onclick="window.location.href='sproduct.html';">
-                <img src="ds/img/products/f6.jpg" alt="">
-                <div class="des">
-                    <span>adidas</span>
-                    <h5>Cartoon Astronaut T-Shirts</h5>
-                    <div class="star">
-                        <i class="fa-solid fa-star"></i>
-                        <i class="fa-solid fa-star"></i>
-                        <i class="fa-solid fa-star"></i>
-                        <i class="fa-solid fa-star"></i>
-                        <i class="fa-solid fa-star-half-stroke"></i>
-                    </div>
-                    <h4>$78</h4>
-                </div>
-                <a href="#"><i class="fa-solid fa-cart-shopping shopping"></i></a>
-
-            </div>
-            <div class="pro" onclick="window.location.href='sproduct.html';">
-                <img src="ds/img/products/f7.jpg" alt="">
-                <div class="des">
-                    <span>adidas</span>
-                    <h5>Cartoon Astronaut T-Shirts</h5>
-                    <div class="star">
-                        <i class="fa-solid fa-star"></i>
-                        <i class="fa-solid fa-star"></i>
-                        <i class="fa-solid fa-star"></i>
-                        <i class="fa-solid fa-star"></i>
-                        <i class="fa-solid fa-star-half-stroke"></i>
-                    </div>
-                    <h4>$78</h4>
-                </div>
-                <a href="#"><i class="fa-solid fa-cart-shopping shopping"></i></a>
-
-            </div>
-            <div class="pro" onclick="window.location.href='sproduct.html';">
-                <img src="ds/img/products/f8.jpg" alt="">
-                <div class="des">
-                    <span>adidas</span>
-                    <h5>Cartoon Astronaut T-Shirts</h5>
-                    <div class="star">
-                        <i class="fa-solid fa-star"></i>
-                        <i class="fa-solid fa-star"></i>
-                        <i class="fa-solid fa-star"></i>
-                        <i class="fa-solid fa-star"></i>
-                        <i class="fa-solid fa-star-half-stroke"></i>
-                    </div>
-                    <h4>$78</h4>
-                </div>
-                <a href="#"><i class="fa-solid fa-cart-shopping shopping"></i></a>
-
-            </div>
+            ?>
         </div>
     </section>
 
@@ -250,142 +144,34 @@ if(!isset($_SESSION['IS_LOGIN'])){
         <h2>New Arrivals</h2>
         <p>Summer Collection New Morden Design</p>
         <div class="pro-container">
-            <div class="pro" onclick="window.location.href='sproduct.html';">
-                <img src="ds/img/products/n1.jpg" alt="">
-                <div class="des">
-                    <span>adidas</span>
-                    <h5>Cartoon Astronaut T-Shirts</h5>
-                    <div class="star">
-                        <i class="fa-solid fa-star"></i>
-                        <i class="fa-solid fa-star"></i>
-                        <i class="fa-solid fa-star"></i>
-                        <i class="fa-solid fa-star"></i>
-                        <i class="fa-solid fa-star-half-stroke"></i>
-                    </div>
-                    <h4>$78</h4>
-                </div>
-                <a href="#"><i class="fa-solid fa-cart-shopping shopping"></i></a>
+            <?php
 
-            </div>
-            <div class="pro" onclick="window.location.href='sproduct.html';">
-                <img src="ds/img/products/n2.jpg" alt="">
-                <div class="des">
-                    <span>adidas</span>
-                    <h5>Cartoon Astronaut T-Shirts</h5>
-                    <div class="star">
-                        <i class="fa-solid fa-star"></i>
-                        <i class="fa-solid fa-star"></i>
-                        <i class="fa-solid fa-star"></i>
-                        <i class="fa-solid fa-star"></i>
-                        <i class="fa-solid fa-star-half-stroke"></i>
+            if(isset($listProducts)){
+                shuffle($listProducts);
+                $result = array_slice($listProducts, 0, 8);
+                foreach ($result as $value){
+                    ?>
+                    <div class="pro" onclick="location.href='View/sproduct.php?id='+<?php echo $value->getIdProduct() ?>;"&nbsp;>
+                        <img src="http://drive.google.com/uc?export=view&id=<?php echo substr($value->getImageProduct(), 32, 33)?>" alt="">
+                        <div class="des">
+                            <span>adidas</span>
+                            <h5><?php echo $value->getNameProduct()?></h5>
+                            <div class="star">
+                                <i class="fa-solid fa-star"></i>
+                                <i class="fa-solid fa-star"></i>
+                                <i class="fa-solid fa-star"></i>
+                                <i class="fa-solid fa-star"></i>
+                                <i class="fa-solid fa-star-half-stroke"></i>
+                            </div>
+                            <h4><?php echo number_format($value->getPrice(), 3, '.', '.')?>VND</h4>
+                        </div>
+                        <a href="#"><i class="fa-solid fa-cart-shopping shopping"></i></a>
                     </div>
-                    <h4>$78</h4>
-                </div>
-                <a href="#"><i class="fa-solid fa-cart-shopping shopping"></i></a>
+                    <?php
+                }
+            }
 
-            </div>
-            <div class="pro" onclick="window.location.href='sproduct.html';">
-                <img src="ds/img/products/n3.jpg" alt="">
-                <div class="des">
-                    <span>adidas</span>
-                    <h5>Cartoon Astronaut T-Shirts</h5>
-                    <div class="star">
-                        <i class="fa-solid fa-star"></i>
-                        <i class="fa-solid fa-star"></i>
-                        <i class="fa-solid fa-star"></i>
-                        <i class="fa-solid fa-star"></i>
-                        <i class="fa-solid fa-star-half-stroke"></i>
-                    </div>
-                    <h4>$78</h4>
-                </div>
-                <a href="#"><i class="fa-solid fa-cart-shopping shopping"></i></a>
-
-            </div>
-            <div class="pro" onclick="window.location.href='sproduct.html';">
-                <img src="ds/img/products/n4.jpg" alt="">
-                <div class="des">
-                    <span>adidas</span>
-                    <h5>Cartoon Astronaut T-Shirts</h5>
-                    <div class="star">
-                        <i class="fa-solid fa-star"></i>
-                        <i class="fa-solid fa-star"></i>
-                        <i class="fa-solid fa-star"></i>
-                        <i class="fa-solid fa-star"></i>
-                        <i class="fa-solid fa-star-half-stroke"></i>
-                    </div>
-                    <h4>$78</h4>
-                </div>
-                <a href="#"><i class="fa-solid fa-cart-shopping shopping"></i></a>
-
-            </div>
-            <div class="pro" onclick="window.location.href='sproduct.html';">
-                <img src="ds/img/products/n5.jpg" alt="">
-                <div class="des">
-                    <span>adidas</span>
-                    <h5>Cartoon Astronaut T-Shirts</h5>
-                    <div class="star">
-                        <i class="fa-solid fa-star"></i>
-                        <i class="fa-solid fa-star"></i>
-                        <i class="fa-solid fa-star"></i>
-                        <i class="fa-solid fa-star"></i>
-                        <i class="fa-solid fa-star-half-stroke"></i>
-                    </div>
-                    <h4>$78</h4>
-                </div>
-                <a href="#"><i class="fa-solid fa-cart-shopping shopping"></i></a>
-
-            </div>
-            <div class="pro" onclick="window.location.href='sproduct.html';">
-                <img src="ds/img/products/n6.jpg" alt="">
-                <div class="des">
-                    <span>adidas</span>
-                    <h5>Cartoon Astronaut T-Shirts</h5>
-                    <div class="star">
-                        <i class="fa-solid fa-star"></i>
-                        <i class="fa-solid fa-star"></i>
-                        <i class="fa-solid fa-star"></i>
-                        <i class="fa-solid fa-star"></i>
-                        <i class="fa-solid fa-star-half-stroke"></i>
-                    </div>
-                    <h4>$78</h4>
-                </div>
-                <a href="#"><i class="fa-solid fa-cart-shopping shopping"></i></a>
-
-            </div>
-            <div class="pro" onclick="window.location.href='sproduct.html';">
-                <img src="ds/img/products/n7.jpg" alt="">
-                <div class="des">
-                    <span>adidas</span>
-                    <h5>Cartoon Astronaut T-Shirts</h5>
-                    <div class="star">
-                        <i class="fa-solid fa-star"></i>
-                        <i class="fa-solid fa-star"></i>
-                        <i class="fa-solid fa-star"></i>
-                        <i class="fa-solid fa-star"></i>
-                        <i class="fa-solid fa-star-half-stroke"></i>
-                    </div>
-                    <h4>$78</h4>
-                </div>
-                <a href="#"><i class="fa-solid fa-cart-shopping shopping"></i></a>
-
-            </div>
-            <div class="pro" onclick="window.location.href='sproduct.html';">
-                <img src="ds/img/products/n8.jpg" alt="">
-                <div class="des">
-                    <span>adidas</span>
-                    <h5>Cartoon Astronaut T-Shirts</h5>
-                    <div class="star">
-                        <i class="fa-solid fa-star"></i>
-                        <i class="fa-solid fa-star"></i>
-                        <i class="fa-solid fa-star"></i>
-                        <i class="fa-solid fa-star"></i>
-                        <i class="fa-solid fa-star-half-stroke"></i>
-                    </div>
-                    <h4>$78</h4>
-                </div>
-                <a href="#"><i class="fa-solid fa-cart-shopping shopping"></i></a>
-
-            </div>
+            ?>
         </div>
     </section>
 

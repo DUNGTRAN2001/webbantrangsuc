@@ -23,11 +23,10 @@
             <ul id="navbar">
                 <li><a href="../index.php">Home</a></li>
                 <li><a href="../View/shop.php">Shop</a></li>
-                <li><a href="../View/blog.html">Blog</a></li>
-                <li><a href="../View/about.html">About</a></li>
-                <li><a href="../View/contact.html">Contact</a></li>
-                <li><a href="../View/search.html"><i class="fas fa-search" id="search-icon"></i></a></li>
-                <li id="lg-bag"><a href="../View/cart.html"><i class="fa-solid fa-bag-shopping"></i></a></li>
+                <li><a href="blog.php">Blog</a></li>
+                <li><a href="about.php">About</a></li>
+                <li><a href="contact.php">Contact</a></li>
+                <li id="lg-bag"><a href="cart.php"><i class="fa-solid fa-bag-shopping"></i></a></li>
                 <a href="#" id="close"><i class="fa-solid fa-xmark"></i></a>
                 <nav role="navigation">
                     <ul>
@@ -44,76 +43,72 @@
 
         <!--reponsive thanh mở hiện trên điện thoại ,còn máy tính thì ko -->
         <div id="mobile">
-            <a href="cart.html"><i class="fa-solid fa-bag-shopping"></i></a>
+            <a href="cart.php"><i class="fa-solid fa-bag-shopping"></i></a>
             <i id="bar" class="fa-solid fa-outdent"></i>
         </div>
     </section>
 
     <section id="page-header" class="about-header">
        
-        <h2>#let's_talk</h2>
+        <h2>#KnowUs</h2>
        
-        <p>LEAVE A MESSAGE, We love to hear from you!</p>
+        <p>Lorem ipsum dolor sit amet, consectetur</p>
         
     </section>
 
-    <section id="contact-details" class="section-p1">
-        <div class="details">
-            <span>GET IN TOUCH</span>
-            <h2>Visit one of our agency locations or contact us today</h2>
-            <h3>Head Office</h3>
-            <div>
-                <li>
-                    <i class="fa-solid fa-map"></i>
-                    <p>56 Glass fdjffkfkdfk</p>
-                </li>
-                <li>
-                    <i class="fa-solid fa-envelope"></i>
-                    <p>contact@example.com</p>
-                </li>
-                <li>
-                    <i class="fa-solid fa-phone"></i>
-                    <p>contact@example.com</p>
-                </li>
-                <li>
-                    <i class="fa-solid fa-clock"></i>
-                    <p>Monday to Saturday: 9.00am to 16.pm</p>
-                </li>
-            </div>
+    <section  id="about-head" class="section-p1">
+        <img src="../ds/img/about/a6.jpg" alt="">
+        <div>
+            <h2>Who We Are?</h2>
+            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut nisi urna, mattis id vestibulum id, scelerisque non libero.
+                 Nam purus libero, condimentum ac arcu lacinia, pretium interdum nibh. In quis mauris ante.
+                  Duis magna felis, pharetra nec nulla non, faucibus rutrum nunc. Nam in ultrices eros.
+                   Morbi aliquam mi lorem, quis tristique lorem maximus sit amet. Suspendisse fermentum varius iaculis. 
+                   Vestibulum tincidunt vulputate ex, id bibendum ante dignissim id. Vestibulum nec massa sem.
+                    Cras pretium accumsan efficitur. </p>
+            <abbr title="">Create stunning images width as much or as little control as you like thanks to a 
+                choice of Basic and Creative modes</abbr>
+            <br><br>
+            <marquee bgcolor="#ccc" loop="-1" scrollamount="5" width="100%">Create stunning images width as 
+                much or as little control as you like thanks to a 
+                choice of Basic and Creative modes</marquee>
         </div>
 
-        <div class="map">
-            <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d59578.49067779147!2d105.
-            76022047910155!3d21.0464593!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3135ab66d74a1743%3A0xc7f20d0d6647110a!2zQ2jhu6MgVOG7
-            kXQgTMOgbmcgTURSVA!5e0!3m2!1svi!2s!4v1651663035761!5m2!1svi!2s"
-             width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+
+    </section>
+
+    <section id="about-app"  class="section-p1">
+        <h1>Download Our <a href="#">App</a></h1>
+        <div class="video">
+            <video autoplay muted loop src="../ds/img/about/1.mp4"></video>
         </div>
     </section>
 
-    <section id="form-details">
-        <form action="">
-            <span>LEAVE A MESSAGE</span>
-            <h2>We love to hear from you</h2>
-            <input type="text" placeholder="Your Name">
-            <input type="text" placeholder="E-mail">
-            <input type="text" placeholder="Subject">
-            <textarea name="" id="" cols="30" rows="10" placeholder="Your Message"></textarea>
-            <button class="normal">Submit</button>
-        </form>
-
-        <div class="people">
-            <div>
-                <img src="../ds/img/people/1.png" alt="">
-                <p><span>Shigeo Tokuda</span> Senior Marketing Manager <br> Phone: +84 0123456789 <br> Email: contact@example.com</p>
-            </div>
-            <div>
-                <img src="../ds/img/people/2.png" alt="">
-                <p><span>Justin Bieber</span> Senior Marketing Manager <br> Phone: +84 0123456789 <br> Email: contact@example.com</p>
-            </div>
-            <div>
-                <img src="../ds/img/people/3.png" alt="">
-                <p><span>Selena Gomez</span> Senior Marketing Manager <br> Phone: +84 0123456789 <br> Email: contact@example.com</p>
-            </div>     
+    
+    <section id="feature" class="section-p1">
+        <div class="fe-box">
+            <img src="../ds/img/features/f1.png" alt="">
+            <h6>Free Shipping</h6>
+        </div>
+        <div class="fe-box">
+            <img src="../ds/img/features/f2.png" alt="">
+            <h6>Online Order</h6>
+        </div>
+        <div class="fe-box">
+            <img src="../ds/img/features/f3.png" alt="">
+            <h6>Save Money</h6>
+        </div>
+        <div class="fe-box">
+            <img src="../ds/img/features/f4.png" alt="">
+            <h6>Promotions</h6>
+        </div>
+        <div class="fe-box">
+            <img src="../ds/img/features/f5.png" alt="">
+            <h6>Happy Sell</h6>
+        </div>
+        <div class="fe-box">
+            <img src="../ds/img/features/f6.png" alt="">
+            <h6>F24/7 Support</h6>
         </div>
     </section>
 

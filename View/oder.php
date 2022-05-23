@@ -22,13 +22,20 @@
             <ul id="navbar">
                 <li><a href="index.php">Home</a></li>
                 <li><a href="shop.html">Shop</a></li>
-                <li><a href="blog.html">Blog</a></li>
-                <li><a href="about.html">About</a></li>
-                <li><a    href="contact.html">Contact</a></li>
-                <li><a href="search.html"><i class="fas fa-search" id="search-icon"></i></a></li>
-                <li id="lg-bag"><a href="cart.html"><i class="fa-solid fa-bag-shopping"></i></a></li>
-                <a href="#" id="close"><i class="fa-solid fa-xmark"></i></a>
-                <li><a href="login.php" class="active">Login</a></li>
+                <li><a href="blog.php">Blog</a></li>
+                <li><a href="about.php">About</a></li>
+                <li><a    href="contact.php">Contact</a></li>
+                <li id="lg-bag"><a href="cart.php"><i class="fa-solid fa-bag-shopping"></i></a></li>
+                <nav role="navigation">
+                    <ul>
+                        <li><a href="#"><i class="fa-solid fa-user"></i></a>
+                            <ul class="dropdown">
+                                <li><a href="profile.php"><i class="fa-solid fa-gears">Setting</i></a></li>
+                                <li><a href="../View/logout.php"><i class="fa-solid fa-right-from-bracket">Logout</i></a></li>
+                            </ul>
+                        </li>
+                    </ul>
+                </nav>
             </ul>
         </div>
     </section>
@@ -37,9 +44,9 @@
             <a href="admin.php"><p class="title-admin">Admin Dashboard</p></a>
             <ul class="category-management">
                 <li class="manage"><a href="user.php">User management <i class="fa-solid fa-user"></i></a></li>
-                <li class="manage"><a href="oder.html">Order management <i class="fa-solid fa-cart-shopping"></i></a></li>
-                <li class="manage"><a href="statistical.html">Revenue statistics <i class="fa-solid fa-chart-line"></i></a></li>
-                <li class="manage"><a href="#">Log out <i class="fa-solid fa-right-from-bracket"></i></a></li>
+                <li class="manage"><a href="oder.php">Order management <i class="fa-solid fa-cart-shopping"></i></a></li>
+                <li class="manage"><a href="statistical.php">Revenue statistics <i class="fa-solid fa-chart-line"></i></a></li>
+                <li class="manage"><a href="../View/logout.php">Log out <i class="fa-solid fa-right-from-bracket"></i></a></li>
             </ul>
         </div>
         <div class="main-table">

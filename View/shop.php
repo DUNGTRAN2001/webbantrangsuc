@@ -14,7 +14,13 @@
 
 </head>
 <body>
-    
+
+
+
+    <form method="post">
+        <input type="text" placeholder="enter " name="key">
+        <button type="submit" id="search" name="search"> Search </button>
+    </form>
 
 
     <section id="header">
@@ -23,11 +29,10 @@
             <ul id="navbar">
                 <li><a href="../index.php">Home</a></li>
                 <li><a  class="active" href="shop.php">Shop</a></li>
-                <li><a href="blog.html">Blog</a></li>
-                <li><a href="about.html">About</a></li>
-                <li><a href="contact.html">Contact</a></li>
-                <li><a href="search.html"><i class="fas fa-search" id="search-icon"></i></a></li>
-                <li id="lg-bag"><a href="cart.html"><i class="fa-solid fa-bag-shopping"></i></a></li>
+                <li><a href="blog.php">Blog</a></li>
+                <li><a href="about.php">About</a></li>
+                <li><a href="contact.php">Contact</a></li>
+                <li id="lg-bag"><a href="cart.php"><i class="fa-solid fa-bag-shopping"></i></a></li>
                 <a href="#" id="close"><i class="fa-solid fa-xmark"></i></a>
                 <nav role="navigation">
                     <ul>
@@ -44,7 +49,7 @@
 
         <!--reponsive thanh mở hiện trên điện thoại ,còn máy tính thì ko -->
         <div id="mobile">
-            <a href="cart.html"><i class="fa-solid fa-bag-shopping"></i></a>
+            <a href="cart.php"><i class="fa-solid fa-bag-shopping"></i></a>
             <i id="bar" class="fa-solid fa-outdent"></i>
         </div>
     </section>
@@ -63,27 +68,32 @@
             <!-- Lệnh onclick bấm vào ra trang details -->
             <?php
             include_once ("../Controller/Controller.php");
-            if(isset($listProducts)){
-                foreach ($listProducts as $value){
-                    ?>
-                    <div class="pro" onclick="location.href='../View/sproduct.php?id='+<?php echo $value->getIdProduct() ?>;"&nbsp;>
-                        <img src="http://drive.google.com/uc?export=view&id=<?php echo substr($value->getImageProduct(), 32, 33)?>" alt="">
-                        <div class="des">
-                            <span>adidas</span>
-                            <h5><?php echo $value->getNameProduct()?></h5>
-                            <div class="star">
-                                <i class="fa-solid fa-star"></i>
-                                <i class="fa-solid fa-star"></i>
-                                <i class="fa-solid fa-star"></i>
-                                <i class="fa-solid fa-star"></i>
-                                <i class="fa-solid fa-star-half-stroke"></i>
-                            </div>
-                            <h4><?php echo number_format($value->getPrice(), 3, '.', '.')?>VND</h4>
+            if(isset($_POST['search'])){
+                $key = $_POST['key'];
+                $list = getListProduct($key, 0);
+            }
+            else{
+                $list = getListProduct("", 0);
+            }
+            foreach ($list as $value){
+                ?>
+                <div class="pro" onclick="location.href='../View/sproduct.php?id='+<?php echo $value->getIdProduct() ?>;"&nbsp;>
+                    <img src="http://drive.google.com/uc?export=view&id=<?php echo substr($value->getImageProduct(), 32, 33)?>" alt="">
+                    <div class="des">
+                        <span>adidas</span>
+                        <h5><?php echo $value->getNameProduct()?></h5>
+                        <div class="star">
+                            <i class="fa-solid fa-star"></i>
+                            <i class="fa-solid fa-star"></i>
+                            <i class="fa-solid fa-star"></i>
+                            <i class="fa-solid fa-star"></i>
+                            <i class="fa-solid fa-star-half-stroke"></i>
                         </div>
-                        <a href="#"><i class="fa-solid fa-cart-shopping shopping"></i></a>
+                        <h4><?php echo number_format($value->getPrice(), 3, '.', '.')?>VND</h4>
                     </div>
-                    <?php
-                }
+                    <a href="#"><i class="fa-solid fa-cart-shopping shopping"></i></a>
+                </div>
+                <?php
             }
 
             ?>

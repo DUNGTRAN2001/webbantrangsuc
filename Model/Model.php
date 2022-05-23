@@ -1,7 +1,9 @@
 <?php
 
-include_once ("../Model/Product.php");
-include_once ("../Model/User.php");
+include_once ($_COOKIE['path']. '/Model/Product.php');
+include_once ($_COOKIE['path']. '/Model/User.php');
+include_once ($_COOKIE['path']. '/Model/OrderDetail.php');
+
 class Model
 {
     private static $instance;
@@ -16,23 +18,34 @@ class Model
 
     public function excuteData($query)
     {
-        $connect = mysqli_connect("localhost", "root", "2001", "qlbh1");
+        $connect = mysqli_connect("localhost", "root", "", "qlbh");
         if ($connect) {
             return mysqli_query($connect, $query);
         }
     }
-    public function getAllProducts()
+    public function getAllProducts($ten, $id)
     {
         try {
-            $query = "select * from product";
+            if($id == 0)
+                $query = "select * from product where ProductName like '%".$ten."%'";
+            if($id == 1)
+                $query = "select * from product where CategoryId = '1' ProductName like '%".$ten."%'";
+            if($id == 2)
+                $query = "select * from product where CategoryId = '2' ProductName like '%".$ten."%'";
+            if($id == 3)
+                $query = "select * from product where CategoryId = '3' ProductName like '%".$ten."%'";
+            if($id == 4)
+                $query = "select * from product where CategoryId = '4' ProductName like '%".$ten."%'";
             $result =  $this->excuteData($query);
             $i = 0;
-            if ($result) {
+            $product = [];
+            if ($result->fetch_row()) {
                 while ($row = mysqli_fetch_array($result)) {
-                    $product[$i++] = new Product($row[0], $row[1], $row[2], $row[3], $row[4], $row[5], $row[6]);
+                    $product[$i++] = new Product($row[0], $row[1], $row[2], $row[3], $row[4], $row[5], $row[6], $row[7]);
                 }
                 return $product;
             }
+            else return null;
         }catch (Exception $exception){
             echo 'Caught exception: ',  $exception->getMessage(), "\n";
         }
@@ -65,6 +78,22 @@ class Model
             echo 'Caught exception: ',  $exception->getMessage(), "\n";
         }
     }
+
+    public function getAllOrderDetail($orderId){
+        $slq = "select * from orderdetail where OrderId = '".$orderId."'";
+        $result = $this->excuteData($slq);
+        $i = 0;
+        $listOrder = [];
+        if ($result) {
+            while ($row = mysqli_fetch_array($result)) {
+                $listOrder[$i++] = new OrderDetail($row[0], $row[1], $row[2], $row[3]);
+            }
+            return $listOrder;
+        }else{
+            return null;
+        }
+    }
+
     public function getAllUser(){
         try {
             $query = "select * from users";
@@ -81,4 +110,5 @@ class Model
             echo 'Caught exception: ',  $exception->getMessage(), "\n";
         }
     }
+
 }

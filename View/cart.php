@@ -23,11 +23,10 @@
             <ul id="navbar">
                 <li><a href="../index.php">Home</a></li>
                 <li><a href="../View/shop.php">Shop</a></li>
-                <li><a href="../View/blog.html">Blog</a></li>
-                <li><a href="../View/about.html">About</a></li>
-                <li><a href="../View/contact.html">Contact</a></li>
-                <li><a href="../View/search.html"><i class="fas fa-search" id="search-icon"></i></a></li>
-                <li id="lg-bag"><a href="../View/cart.html"><i class="fa-solid fa-bag-shopping"></i></a></li>
+                <li><a href="blog.php">Blog</a></li>
+                <li><a href="about.php">About</a></li>
+                <li><a href="contact.php">Contact</a></li>
+                <li id="lg-bag"><a href="cart.php"><i class="fa-solid fa-bag-shopping"></i></a></li>
                 <a href="#" id="close"><i class="fa-solid fa-xmark"></i></a>
                 <nav role="navigation">
                     <ul>
@@ -44,7 +43,7 @@
 
         <!--reponsive thanh mở hiện trên điện thoại ,còn máy tính thì ko -->
         <div id="mobile">
-            <a href="cart.html"><i class="fa-solid fa-bag-shopping"></i></a>
+            <a href="cart.php"><i class="fa-solid fa-bag-shopping"></i></a>
             <i id="bar" class="fa-solid fa-outdent"></i>
         </div>
     </section>
@@ -70,30 +69,36 @@
                 </tr>
             </thead>
             <tbody>
-                <tr>
-                    <td><a href="#"><i class="fa-solid fa-circle-xmark"></i></a></td>
-                    <td><img src="../ds/img/products/f1.jpg" alt=""></td>
-                    <td>Cartoon Astronaut T-Shirts</td>
-                    <td>$118.19</td>
-                    <td><input type="number" value="1"></td>
-                    <td>$118.19</td>
-                </tr>
-                <tr>
-                    <td><a href="#"><i class="fa-solid fa-circle-xmark"></i></a></td>
-                    <td><img src="../ds/img/products/f2.jpg" alt=""></td>
-                    <td>Cartoon Astronaut T-Shirts</td>
-                    <td>$118.19</td>
-                    <td><input type="number" value="1"></td>
-                    <td>$118.19</td>
-                </tr>
-                <tr>
-                    <td><a href="#"><i class="fa-solid fa-circle-xmark"></i></a></td>
-                    <td><img src="../ds/img/products/f3.jpg" alt=""></td>
-                    <td>Cartoon Astronaut T-Shirts</td>
-                    <td>$118.19</td>
-                    <td><input type="number" value="1"></td>
-                    <td>$118.19</td>
-                </tr>
+                <?php
+                    include_once ('../Controller/Controller.php');
+                    if(!empty($_GET['message'])) {
+                        $message = $_GET['message'];
+                        echo "<script type='text/javascript'>alert('".$message."');</script>";
+                    }
+                    if(checkOrderId($_COOKIE['orderId'])){
+                        $listOrder = getlistOrder();
+                        if(isset($listOrder)){
+                            $total = 0;
+                            $i = 0;
+                            foreach ($listOrder as $value)
+                            {
+                                $product = getProductById($value->getIdProduct())
+                                ?>
+                                <tr>
+                                    <td><a href="../Controller/Controller.php?oId=<?php echo $value->getIdOrder()?>&pId=<?php echo $value->getIdProduct()?>"><i class="fa-solid fa-circle-xmark"></i></a></td>
+                                    <td><img src="http://drive.google.com/uc?export=view&id=<?php echo substr($product->getImageProduct(), 32, 33)?>" alt=""></td>
+                                    <td><?php echo $product->getNameProduct()?></td>
+                                    <td><input style="border: none; width: 70px" type="text" readonly value="<?php echo number_format($product->getPrice(), 3, '.', '.')?>" id="p<?php echo $i?>">VND</td>
+                                    <td><input type="number" value="<?php echo $value->getQuanlity()?>" onchange="Change(<?php echo $i?>)" id="q<?php echo $i ?>"></td>
+                                    <td><input  style="border: none; width: 70px" readonly type="text" value="<?php $total = $total + $value->getPrice(); echo number_format($value->getPrice(), 3, '.', '.')?>" id="s<?php echo $i?>">VND</td>
+                                </tr>
+                                <?php
+                                $i = $i + 1;
+                            }
+                        }
+                    }
+                ?>
+
             </tbody>
         </table>
     </section>
@@ -109,10 +114,10 @@
 
         <div id="subtotal">
             <h3>Cart Totals</h3>
-            <table>
+            <table id="order">
                 <tr>
                     <td>Cart Subtotal</td>
-                    <td>$335</td>
+                    <td><input style="border: none; width: 70px;" type="text" readonly value="<?php echo number_format($total, 3, '.', '.')?>" id="cs">VND</td>
                 </tr>
                 <tr>
                     <td>Shipping</td>
@@ -120,10 +125,12 @@
                 </tr>
                 <tr>
                     <td><strong>Total</strong></td>
-                    <td><strong>$335</strong></td>
+                    <td><strong><input style="border: none; width: 70px; font-weight: bold" type="text" readonly value="<?php echo number_format($total, 3, '.', '.')?>" id="total">VND</strong></td>
                 </tr>
             </table>
-            <button class="normal">Proceed to checkout</button>
+            <form method="post" action="../Controller/Controller.php">
+                <button class="normal" type="submit" id="payment" name="payment">Payment</button>
+            </form>
         </div>
     </section>
 

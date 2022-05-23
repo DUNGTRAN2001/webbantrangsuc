@@ -9,6 +9,7 @@ class Product
     private $quanlity;
     private $id_category;
     private $description;
+    private $materialName;
 
     /**
      * @param $id_product
@@ -17,10 +18,10 @@ class Product
      * @param $price
      * @param $quanlity
      * @param $id_category
-//     * @param $material
+     * @param $material
      * @param $description
      */
-    public function __construct($id_product, $name_product, $image_product, $price, $quanlity, $id_category, $description)
+    public function __construct($id_product, $name_product, $image_product, $price, $quanlity, $id_category, $description, $materialName)
     {
         $this->id_product = $id_product;
         $this->name_product = $name_product;
@@ -29,6 +30,7 @@ class Product
         $this->quanlity = $quanlity;
         $this->id_category = $id_category;
         $this->description = $description;
+        $this->materialName = $materialName;
     }
 
 
@@ -136,6 +138,22 @@ class Product
     public function getDescription()
     {
         return $this->description;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getMaterialName()
+    {
+        return $this->materialName;
+    }
+
+    /**
+     * @param mixed $materialName
+     */
+    public function setMaterialName($materialName): void
+    {
+        $this->materialName = $materialName;
     }
 
     /**

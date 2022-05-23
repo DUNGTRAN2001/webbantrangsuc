@@ -23,13 +23,21 @@
         <ul id="navbar">
             <li><a href="index.php">Home</a></li>
             <li><a href="shop.html">Shop</a></li>
-            <li><a href="blog.html">Blog</a></li>
-            <li><a href="about.html">About</a></li>
-            <li><a href="contact.html">Contact</a></li>
-            <li><a href="search.html"><i class="fas fa-search" id="search-icon"></i></a></li>
+            <li><a href="blog.php">Blog</a></li>
+            <li><a href="about.php">About</a></li>
+            <li><a href="contact.php">Contact</a></li>
             <li id="lg-bag"><a href="cart.html"><i class="fa-solid fa-bag-shopping"></i></a></li>
             <a href="#" id="close"><i class="fa-solid fa-xmark"></i></a>
-            <li><a href="login.php" class="active">Login</a></li>
+            <nav role="navigation">
+                <ul>
+                    <li><a href="#"><i class="fa-solid fa-user"></i></a>
+                        <ul class="dropdown">
+                            <li><a href="profile.php"><i class="fa-solid fa-gears">Setting</i></a></li>
+                            <li><a href="../View/logout.php"><i class="fa-solid fa-right-from-bracket">Logout</i></a></li>
+                        </ul>
+                    </li>
+                </ul>
+            </nav>
         </ul>
     </div>
 </section>
@@ -38,10 +46,10 @@
         <a href="admin.php"><p class="title-admin">Admin Dashboard</p></a>
         <ul class="category-management">
             <li class="manage"><a href="user.php">User management <i class="fa-solid fa-user"></i></a></li>
-            <li class="manage"><a href="oder.html">Order management <i class="fa-solid fa-cart-shopping"></i></a></li>
-            <li class="manage"><a href="statistical.html">Revenue statistics <i class="fa-solid fa-chart-line"></i></a>
+            <li class="manage"><a href="oder.php">Order management <i class="fa-solid fa-cart-shopping"></i></a></li>
+            <li class="manage"><a href="statistical.php">Revenue statistics <i class="fa-solid fa-chart-line"></i></a>
             </li>
-            <li class="manage"><a href="#">Log out <i class="fa-solid fa-right-from-bracket"></i></a></li>
+            <li class="manage"><a href="../View/logout.php">Log out <i class="fa-solid fa-right-from-bracket"></i></a></li>
         </ul>
     </div>
     <div class="main-table">
@@ -56,21 +64,11 @@
                 <th>Phone</th>
                 <th>Action</th>
             </tr>
-
-                <!--                    <td>dungtran@gmail.com</td>-->
-                <!--                    <td>dungtran</td>-->
-                <!--                    <td>quang nam</td>-->
-                <!--                    <td>0762601873</td>-->
-                <!--                    <td>-->
-                <!--                        <span  class="edit-icon"><i class="fa-solid fa-pen-to-square"></i></span>-->
-                <!--                        <span class="delete-icon"><i class="fa-solid fa-trash-can"></i></span>-->
-                <!--                    </td>-->
                 <?php
-//                include_once ("../Controller/Controller.php");
                 include_once("../Controller/Controller.php");
                 $listUser = getAllUsers();
                 if (isset($listUser)) {
-//                    echo "cod u liuẹ nè";
+
                     foreach ($listUser as $user) {
                         ?>
             <tr>
@@ -88,16 +86,6 @@
                 }
                 ?>
 
-<!--            <tr>-->
-<!--                <td>haile101@gmail.com</td>-->
-<!--                <td>Haile</td>-->
-<!--                <td>quang nam</td>-->
-<!--                <td>0762601874</td>-->
-<!--                <td>-->
-<!--                    <span class="edit-icon"><i class="fa-solid fa-pen-to-square"></i></span>-->
-<!--                    <span class="delete-icon"><i class="fa-solid fa-trash-can"></i></span>-->
-<!--                </td>-->
-<!--            </tr>-->
         </table>
         <img src="../ds/img/p7.png" alt="" class="anhmay">
     </div>

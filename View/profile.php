@@ -20,10 +20,10 @@
         include_once ("../Controller/Controller.php");
         $id = $_COOKIE['id'];
         $user = getUserById($id);
-    if(!empty($_GET['message'])) {
-        $message = $_GET['message'];
-        echo "<script type='text/javascript'>alert('".$message."');</script>";
-    }
+        if(!empty($_GET['message'])) {
+            $message = $_GET['message'];
+            echo "<script type='text/javascript'>alert('".$message."');</script>";
+        }
     ?>
 
     <section id="header">
@@ -32,11 +32,10 @@
             <ul id="navbar">
                 <li><a href="../index.php">Home</a></li>
                 <li><a href="../View/shop.php">Shop</a></li>
-                <li><a href="../View/blog.html">Blog</a></li>
-                <li><a href="../View/about.html">About</a></li>
-                <li><a href="../View/contact.html">Contact</a></li>
-                <li><a href="../View/search.html"><i class="fas fa-search" id="search-icon"></i></a></li>
-                <li id="lg-bag"><a href="../View/cart.html"><i class="fa-solid fa-bag-shopping"></i></a></li>
+                <li><a href="blog.php">Blog</a></li>
+                <li><a href="about.php">About</a></li>
+                <li><a href="contact.php">Contact</a></li>
+                <li id="lg-bag"><a href="cart.php"><i class="fa-solid fa-bag-shopping"></i></a></li>
                 <a href="#" id="close"><i class="fa-solid fa-xmark"></i></a>
                 <nav role="navigation">
                     <ul>
