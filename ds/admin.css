@@ -46,7 +46,7 @@
     top: 0;
     left: 20%;
     width: 100%;
-    height: 750px;
+    height: 100%;
     overflow: hidden;
 }
 
@@ -66,7 +66,7 @@
     left: 0;
     z-index: 5;
     width: 100%;
-    height: 200px;
+    height: 25%;
     opacity: 0;
     animation: tuduoilen 1.5s forwards;
 }
@@ -87,8 +87,8 @@
     top: -40%;
     left: 15%;
     z-index: 4;
-    width: 400px;
-    height: 400px;
+    width: 25%;
+    height: 50%;
     opacity: 0;
     animation: trenxuong 1s forwards;
     transition: 0.4;
@@ -111,8 +111,8 @@
     top: 20%;
     left: 10%;
     z-index: 3;
-    width: 300px;
-    height: 300px;
+    width: 30%;
+    height: 40%;
     opacity: 0;
     transition: 0.4s;
     transform: scale(0);
@@ -136,8 +136,8 @@
     top: 10%;
     left: 20%;
     z-index: 3;
-    width: 300px;
-    height: 300px;
+    width: 25%;
+    height: 40%;
     transform: scale(0);
     animation: tora 1s forwards;
     animation-delay: 3s;

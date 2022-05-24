@@ -83,6 +83,7 @@
                 ?>
                 <div class="pro" onclick="location.href='../View/sproduct.php?id='+<?php echo $value->getIdProduct() ?>;"&nbsp;>
                     <img src="http://drive.google.com/uc?export=view&id=<?php echo substr($value->getImageProduct(), 32, 33)?>" alt="">
+                    <img src="https://bacminhcanh.com/wp-content/uploads/2020/08/bong-tai-hinh-no-ngoc-trai-bt178-1-Copy.jpg" alt="" class="overplay">
                     <div class="des">
                         <span>adidas</span>
                         <h5><?php echo $value->getNameProduct()?></h5>
@@ -337,17 +338,6 @@
         <div class="copyright">
             <p>© 2022, chotot - All Rights Reverved</p>
         </div>
-
-
-    
-
-
-
-
-
-
-
-
     </footer>
 
     
