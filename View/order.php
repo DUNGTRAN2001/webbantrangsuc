@@ -16,12 +16,19 @@
 
 </head>
 <body>
+    <?php
+        include_once ('../Controller/Controller.php');
+        if(!empty($_GET['message'])) {
+            $message = $_GET['message'];
+            echo "<script type='text/javascript'>alert('".$message."');</script>";
+        }
+    ?>
     <section id="header">
         <a href="#"><img class="logo" src="../ds/img/chototlogo.png" alt=""></a>
         <div>
             <ul id="navbar">
                 <li><a href="../index.php">Home</a></li>
-                <li><a  class="active" href="shop.php">Shop</a></li>
+                <li><a  class="active" href="shop.php?page=1">Shop</a></li>
                 <li><a  class="active" href="bongtai.php">Bông tai</a></li>
                 <li><a  class="active" href="daychuyen.php">Dây chuyền</a></li>
                 <li><a  class="active" href="vongtay.php">Vòng tay</a></li>
@@ -49,39 +56,45 @@
             <a href="admin.php"><p class="title-admin">Admin Dashboard</p></a>
             <ul class="category-management">
                 <li class="manage"><a href="user.php">User management <i class="fa-solid fa-user"></i></a></li>
-                <li class="manage"><a href="oder.php">Order management <i class="fa-solid fa-cart-shopping"></i></a></li>
+                <li class="manage"><a href="order.php">Order management <i class="fa-solid fa-cart-shopping"></i></a></li>
                 <li class="manage"><a href="statistical.php">Revenue statistics <i class="fa-solid fa-chart-line"></i></a></li>
                 <li class="manage"><a href="../View/logout.php">Log out <i class="fa-solid fa-right-from-bracket"></i></a></li>
             </ul>
         </div>
         <div class="main-table">
-           <table class="table">
-               <tr>
-                   <th>Oderid</th>
-                   <th>Username</th>
-                   <th>Note</th>
-                   <th>Date</th>
-                   <th>Total</th>
-                   <th>Accept oder</th>
-               </tr>
-               <tr>
-                    <td>1 <i class="fa-solid fa-eye eye-icon"></i></td>
-                    <td>dungtran</td>
-                    <td>Vận chuyển cẩn thận</td>
-                    <td>22/5/20022</td>
-                    <td>4.500.000 (vnđ)</td>
-                    <td>Accept <input type="checkbox" class="checkbox"></td>
-               </tr>
-               <tr>
-                    <td>2 <i class="fa-solid fa-eye eye-icon"></i></td>
-                    <td>haile</td>
-                    <td>Cần nhận hàng sớm</td>
-                    <td>21/5/20022</td>
-                    <td>3.500.000 (vnđ)</td>
-                    <td>Accept <input type="checkbox" class="checkbox"></td>
-                </tr>
-           </table>
-           <button class="submit">Submit oder</button>
+           <form method="post" action="../Controller/Controller.php">
+               <table class="table">
+                   <tr>
+                       <th>Oderid</th>
+                       <th>Username</th>
+                       <th>Note</th>
+                       <th>Date</th>
+                       <th>Total</th>
+                       <th>Accept oder</th>
+                   </tr>
+                   <?php
+
+                   $listOrder = getAllOrder();
+                   $i = 0;
+                   foreach ($listOrder as $order){
+                       $idUser = $order->getIdUser();
+                       $user = getUserById($idUser);
+                       ?>
+                       <tr>
+                           <td><?php echo $i++?></td>
+                           <td><?php echo $user->getNameUser()?></td>
+                           <td><?php echo $order->getNote()?></td>
+                           <td><?php echo $order->getCreateDate()?></td>
+                           <td><?php echo getPriceByOrderId($order->getIdOrder())?>.000 VND</td>
+                           <td>Accept <input type="checkbox" class="checkbox" name="check_list[]" value="<?php echo $order->getIdOrder() ?>"></td>
+                       </tr>
+                       <?php
+                   }
+                   ?>
+
+               </table>
+               <button class="submit" type="submit" name="submit_order" id="submit_order">Submit oder</button>
+           </form>
            <img src="../ds/img/p7.png" alt="" class="anhmay">
         </div>
         <div class="lopmo"></div>

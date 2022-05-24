@@ -3,6 +3,7 @@
 include_once ($_COOKIE['path']. '/Model/Product.php');
 include_once ($_COOKIE['path']. '/Model/User.php');
 include_once ($_COOKIE['path']. '/Model/OrderDetail.php');
+include_once ($_COOKIE['path']. '/Model/Order.php');
 
 class Model
 {
@@ -108,6 +109,34 @@ class Model
             }
         }catch (Exception $exception){
             echo 'Caught exception: ',  $exception->getMessage(), "\n";
+        }
+    }
+    public function getAllOrder(){
+        try {
+            $query = "select * from orders where ship = '0' and status = '1'";
+            $result =  $this->excuteData($query);
+            $i = 0;
+            $order = [];
+            if ($result) {
+                while ($row = mysqli_fetch_array($result)) {
+                    $order[$i++] = new Order($row[0], $row[1], $row[2], $row[3], $row[4]);
+                }
+                return $order;
+            }
+        }catch (Exception $exception){
+            echo 'Caught exception: ',  $exception->getMessage(), "\n";
+        }
+    }
+
+    public function getPriceByOrderId($OrderId){
+        $query = "select * from orderdetail where OrderId = '".$OrderId."'";
+        $result =  $this->excuteData($query);
+        $total = 0;
+        if($result){
+            while ($row = mysqli_fetch_array($result)) {
+                $total += $row[3];
+            }
+            return $total;
         }
     }
 

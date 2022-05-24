@@ -65,7 +65,6 @@ if (isset($_POST['signup'])) {
                 $sql = "insert into users (	UserName, Password, Email, Phone, Address) values ('$username', '$password', '$email', '$phone', '$address')";
                 $result = Model::getInstance()->excuteData($sql);
                 $user = mysqli_fetch_array($result);
-                echo "<script type='text/javascript'>alert('Successful registration');</script>";
                 setcookie('username', $username, time() + 60 * 60 * 24 * 365);
                 setcookie('password', $password, time() + 60 * 60 * 24 * 365);
                 setcookie('id', $user[0], time() + 60 * 60 * 24 * 365);
@@ -201,3 +200,70 @@ if(isset($_GET['oId']) && isset($_GET['pId'])){
     header('location:../View/cart.php?message=Delete success!');
 }
 
+if(isset($_POST['edit_admin'])){
+    $id = $_POST['idS'];
+    $username = $_POST['usernameS'];
+    $email = $_POST['emailS'];
+    $phone = $_POST['phoneS'];
+    $address = $_POST['addressS'];
+
+    try {
+        $sql = "UPDATE users SET UserName = '" . $username . "',Email = '" . $email . "', Phone = '" . $phone . "', Address = '" . $address . "' WHERE UserId ='" . $id . "'";
+        Model::getInstance()->excuteData($sql);
+        header('location:../View/user.php?message=Update success!');
+    }catch (Exception $e){
+        header('location:../View/user.php?message='.$e->getMessage().'!');
+    }
+
+}
+
+if(isset($_POST['delete_user'])){
+    $id = $_POST['uId'];
+    if($id == $_COOKIE['id']){
+        header("location:../View/user.php?message=Can not delete the account that is logged in!");
+    }else{
+//        $sql = "select OrderId from orders where UserId = '".$id."'";
+//        $data = Model::getInstance()->excuteData($sql);
+//        $array=[];
+//        while ($row = mysqli_fetch_array($data)) {
+//            $array[] = $row['OrderId'];
+//        }
+//        foreach ($array as $arr){
+//            $sql = "delete from orderdetail where OrderId = '".$arr."'";
+//            Model::getInstance()->excuteData($sql);
+//        }
+//        $sql = "delete from orders where UserId = '".$id."'";
+//        Model::getInstance()->excuteData($sql);
+//        $sql = "delete from users where UserId = '".$id."'";
+//        Model::getInstance()->excuteData($sql);
+        header("location:../View/user.php?message=Delete success!");
+    }
+}
+
+if(isset($_POST['add_admin'])){
+    $username = $_POST['username'];
+    $password = $_POST['password'];
+    $email = $_POST['email'];
+    $phone = $_POST['phone'];
+    $address = $_POST['address'];
+
+    $sql = "insert into users (	UserName, Password, Email, Phone, Address) values ('$username', '$password', '$email', '$phone', '$address')";
+    $result = Model::getInstance()->excuteData($sql);
+    header("location:../View/user.php?message=Add success!");
+}
+function getAllOrder(){
+    return Model::getInstance()->getAllOrder();
+}
+function getPriceByOrderId($OrderId){
+    return Model::getInstance()->getPriceByOrderId($OrderId);
+}
+
+if(isset($_POST['submit_order'])){
+    if(!empty($_POST['check_list'])){
+        foreach($_POST['check_list'] as $selected){
+            $sql = "update orders set ship = '1' where OrderId = '".$selected."'";
+            Model::getInstance()->excuteData($sql);
+        }
+        header("location:../View/order.php?message=Successful shipping confirmation!");
+    }else header("location:../View/order.php?message=There are no items selected!");
+}

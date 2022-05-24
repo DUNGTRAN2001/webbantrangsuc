@@ -22,7 +22,7 @@
         <div>
             <ul id="navbar">
                 <li><a href="../index.php">Home</a></li>
-                <li><a  class="active" href="shop.php">Shop</a></li>
+                <li><a  class="active" href="shop.php?page=1">Shop</a></li>
                 <li><a  class="active" href="bongtai.php">Bông tai</a></li>
                 <li><a  class="active" href="daychuyen.php">Dây chuyền</a></li>
                 <li><a  class="active" href="vongtay.php">Vòng tay</a></li>
@@ -50,7 +50,7 @@
             <a href="admin.php"><p class="title-admin">Admin Dashboard</p></a>
             <ul class="category-management">
                 <li class="manage"><a href="user.php">User management <i class="fa-solid fa-user"></i></a></li>
-                <li class="manage"><a href="oder.php">Order management <i class="fa-solid fa-cart-shopping"></i></a></li>
+                <li class="manage"><a href="order.php">Order management <i class="fa-solid fa-cart-shopping"></i></a></li>
                 <li class="manage"><a href="statistical.php">Revenue statistics <i class="fa-solid fa-chart-line"></i></a></li>
                 <li class="manage"><a href="../View/logout.php">Log out <i class="fa-solid fa-right-from-bracket"></i></a></li>
             </ul>

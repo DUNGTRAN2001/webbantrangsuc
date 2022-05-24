@@ -22,7 +22,7 @@
     <div>
         <ul id="navbar">
             <li><a href="../index.php">Home</a></li>
-            <li><a  class="active" href="shop.php">Shop</a></li>
+            <li><a  class="active" href="shop.php?page=1">Shop</a></li>
             <li><a  class="active" href="bongtai.php">Bông tai</a></li>
             <li><a  class="active" href="daychuyen.php">Dây chuyền</a></li>
             <li><a  class="active" href="vongtay.php">Vòng tay</a></li>
@@ -50,7 +50,7 @@
         <a href="admin.php"><p class="title-admin">Admin Dashboard</p></a>
         <ul class="category-management">
             <li class="manage"><a href="user.php">User management <i class="fa-solid fa-user"></i></a></li>
-            <li class="manage"><a href="oder.php">Order management <i class="fa-solid fa-cart-shopping"></i></a></li>
+            <li class="manage"><a href="order.php">Order management <i class="fa-solid fa-cart-shopping"></i></a></li>
             <li class="manage"><a href="statistical.php">Revenue statistics <i class="fa-solid fa-chart-line"></i></a>
             </li>
             <li class="manage"><a href="../View/logout.php">Log out <i class="fa-solid fa-right-from-bracket"></i></a></li>
@@ -70,22 +70,30 @@
             </tr>
                 <?php
                 include_once("../Controller/Controller.php");
+                if(!empty($_GET['message'])) {
+                    $message = $_GET['message'];
+                    echo "<script type='text/javascript'>alert('".$message."');</script>";
+                }
                 $listUser = getAllUsers();
                 if (isset($listUser)) {
-
+                    $i = 0;
                     foreach ($listUser as $user) {
                         ?>
             <tr>
-                        <td><?php echo $user->getEmail() ?></td>
-                        <td><?php echo $user->getNameUser() ?></td>
-                        <td><?php echo $user->getAddress() ?></td>
-                        <td><?php echo $user->getPhone() ?></td>
+                        <td><input type="hidden" style="border: none" value="<?php echo $user->getEmail()?>" id="uEmail<?php echo $i?>"><input type="hidden" id="IdUser<?php echo $i?>" value="<?php echo $user->getIdUser()?>"><?php echo $user->getEmail() ?></td>
+                        <td><input type="hidden" style="border: none" value="<?php echo $user->getNameUser()?>" id="uName<?php echo $i?>"><?php echo $user->getNameUser() ?></td>
+                        <td><input type="hidden" style="border: none" value="<?php echo $user->getAddress()?>" id="uAddress<?php echo $i?>"><?php echo $user->getAddress() ?></td>
+                        <td><input type="hidden" style="border: none" value="<?php echo $user->getPhone()?>" id="uPhone<?php echo $i?>"><?php echo $user->getPhone() ?></td>
                         <td>
-                            <span class="edit-icon"><i class="fa-solid fa-pen-to-square"></i></span>
-                            <span class="delete-icon"><i class="fa-solid fa-trash-can"></i></span>
+                            <a href="#" onclick="Edit(<?php echo $i?>); return false;"><span class="edit-icon"><i class="fa-solid fa-pen-to-square"></i></span></a>
+                            <form method="post" action="../Controller/Controller.php">
+                                <input type="hidden" name="uId" value="<?php echo $user->getIdUser()?>">
+                                <button type="submit" name="delete_user" id="delete_user"><span class="delete-icon"><i class="fa-solid fa-trash-can"></i></span></button>
+                            </form>
                         </td>
             </tr>
                         <?php
+                        $i++;
                     }
                 }
                 ?>
@@ -98,39 +106,44 @@
 <div class="profile">
     <div class="info">
         <p class="title">CHỈNH SỬA THÔNG TIN NGƯỜI DÙNG</p>
-        <span>Email</span>
-        <input type="email" placeholder="email ...">
-        <br>
-        <span>Phone</span>
-        <input type="text" placeholder="Phone ...">
-        <br>
-        <span>Address</span>
-        <input type="text" placeholder="Address ...">
-        <br>
-        <span>User name</span>
-        <input type="text" placeholder="user name ...">
-        <button class="submit">Save Changes</button>
+        <form action="../Controller/Controller.php" method="post">
+            <input type="hidden" id="idS" name="idS">
+            <span>Email</span>
+            <input type="email" id="emailS" name="emailS" placeholder="email ...">
+            <br>
+            <span>Phone</span>
+            <input type="text" id="phoneS" name="phoneS" placeholder="Phone ...">
+            <br>
+            <span>Address</span>
+            <input type="text" id="addressS" name="addressS" placeholder="Address ...">
+            <br>
+            <span>User name</span>
+            <input type="text" id="usernameS" name="usernameS" placeholder="user name ...">
+            <button id="edit_admin" name="edit_admin" type="submit" class="submit">Save Changes</button>
+        </form>
         <button class="close">Close</button>
     </div>
 </div>
 <div class="add-user">
     <div class="info">
         <p class="title">THÊM MỚI NGƯỜI DÙNG</p>
-        <span>Email</span>
-        <input type="email" placeholder="email ...">
-        <br>
-        <span>Phone</span>
-        <input type="text" placeholder="Phone ...">
-        <br>
-        <span>Address</span>
-        <input type="text" placeholder="Address ...">
-        <br>
-        <span>Username</span>
-        <input type="text" placeholder="username ...">
-        <br>
-        <span>Password</span>
-        <input type="password" placeholder="password ...">
-        <button class="submit">Save User</button>
+        <form method="post" action="../Controller/Controller.php">
+            <span>Email</span>
+            <input type="email" name="email" placeholder="email ...">
+            <br>
+            <span>Phone</span>
+            <input type="text" name="phone" placeholder="Phone ...">
+            <br>
+            <span>Address</span>
+            <input type="text" name="address" placeholder="Address ...">
+            <br>
+            <span>Username</span>
+            <input type="text" name="username" placeholder="username ...">
+            <br>
+            <span>Password</span>
+            <input type="password" name="password" placeholder="password ...">
+            <button class="submit" id="add_admin" name="add_admin" type="submit">Save User</button>
+        </form>
         <button class="close-user">Close</button>
     </div>
 </div>
@@ -158,6 +171,17 @@
             $('.lopmo').removeClass('lopmohienra');
         });
 
-    });
+    })
+    function Edit(i)
+    {
+        document.getElementById('idS').value = document.getElementById('IdUser'+i).value
+        document.getElementById('emailS').value = document.getElementById('uEmail'+i).value
+        document.getElementById('phoneS').value = document.getElementById('uPhone'+i).value
+        document.getElementById('addressS').value = document.getElementById('uAddress'+i).value
+        document.getElementById('usernameS').value = document.getElementById('uName'+i).value
+    }
+    function Delete(i){
+
+    }
 </script>
 </html>

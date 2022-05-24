@@ -28,7 +28,7 @@
         <div>
             <ul id="navbar">
                 <li><a href="../index.php">Home</a></li>
-                <li><a  class="active" href="shop.php">Shop</a></li>
+                <li><a  class="active" href="shop.php?page=1">Shop</a></li>
                 <li><a  class="active" href="bongtai.php">Bông tai</a></li>
                 <li><a  class="active" href="daychuyen.php">Dây chuyền</a></li>
                 <li><a  class="active" href="vongtay.php">Vòng tay</a></li>
@@ -72,9 +72,15 @@
             <!-- Lệnh onclick bấm vào ra trang details -->
             <?php
             include_once ("../Controller/Controller.php");
+            $sl = 16;
+            $num_page = ceil(count(getListProduct("", 0))/$sl);
             if(isset($_POST['search'])){
                 $key = $_POST['key'];
                 $list = getListProduct($key, 0);
+            }
+            elseif (isset($_GET['page'])){
+                $page = $_GET['page'];
+                $list = array_slice(getListProduct("", 0), ($page-1)*$sl, $sl);
             }
             else{
                 $list = getListProduct("", 0);
@@ -103,171 +109,19 @@
             }
 
             ?>
-<!--            ?>-->
-<!--            d"><i class="fa-solid fa-cart-shopping shopping"></i></a>-->
-<!---->
-<!--            </div>-->
-<!--            <div class="pro" onclick="window.location.href='sproduct.html';">-->
-<!--                <img src="../ds/img/products/f8.jpg" alt="">-->
-<!--                <div class="des">-->
-<!--                    <span>adidas</span>-->
-<!--                    <h5>Cartoon Astronaut T-Shirts</h5>-->
-<!--                    <div class="star">-->
-<!--                        <i class="fa-solid fa-star"></i>-->
-<!--                        <i class="fa-solid fa-star"></i>-->
-<!--                        <i class="fa-solid fa-star"></i>-->
-<!--                        <i class="fa-solid fa-star"></i>-->
-<!--                        <i class="fa-solid fa-star-half-stroke"></i>-->
-<!--                    </div>-->
-<!--                    <h4>$78</h4>-->
-<!--                </div>-->
-<!--                <a href="#"><i class="fa-solid fa-cart-shopping shopping"></i></a>-->
-<!---->
-<!--            </div>-->
-<!---->
-<!--            <div class="pro" onclick="window.location.href='sproduct.html';">-->
-<!--                <img src="../ds/img/products/n1.jpg" alt="">-->
-<!--                <div class="des">-->
-<!--                    <span>adidas</span>-->
-<!--                    <h5>Cartoon Astronaut T-Shirts</h5>-->
-<!--                    <div class="star">-->
-<!--                        <i class="fa-solid fa-star"></i>-->
-<!--                        <i class="fa-solid fa-star"></i>-->
-<!--                        <i class="fa-solid fa-star"></i>-->
-<!--                        <i class="fa-solid fa-star"></i>-->
-<!--                        <i class="fa-solid fa-star-half-stroke"></i>-->
-<!--                    </div>-->
-<!--                    <h4>$78</h4>-->
-<!--                </div>-->
-<!--                <a href="#"><i class="fa-solid fa-cart-shopping shopping"></i></a>-->
-<!---->
-<!--            </div>-->
-<!--            <div class="pro" onclick="window.location.href='sproduct.html';">-->
-<!--                <img src="../ds/img/products/n2.jpg" alt="">-->
-<!--                <div class="des">-->
-<!--                    <span>adidas</span>-->
-<!--                    <h5>Cartoon Astronaut T-Shirts</h5>-->
-<!--                    <div class="star">-->
-<!--                        <i class="fa-solid fa-star"></i>-->
-<!--                        <i class="fa-solid fa-star"></i>-->
-<!--                        <i class="fa-solid fa-star"></i>-->
-<!--                        <i class="fa-solid fa-star"></i>-->
-<!--                        <i class="fa-solid fa-star-half-stroke"></i>-->
-<!--                    </div>-->
-<!--                    <h4>$78</h4>-->
-<!--                </div>-->
-<!--                <a href="#"><i class="fa-solid fa-cart-shopping shopping"></i></a>-->
-<!---->
-<!--            </div>-->
-<!--            <div class="pro" onclick="window.location.href='sproduct.html';">-->
-<!--                <img src="../ds/img/products/n3.jpg" alt="">-->
-<!--                <div class="des">-->
-<!--                    <span>adidas</span>-->
-<!--                    <h5>Cartoon Astronaut T-Shirts</h5>-->
-<!--                    <div class="star">-->
-<!--                        <i class="fa-solid fa-star"></i>-->
-<!--                        <i class="fa-solid fa-star"></i>-->
-<!--                        <i class="fa-solid fa-star"></i>-->
-<!--                        <i class="fa-solid fa-star"></i>-->
-<!--                        <i class="fa-solid fa-star-half-stroke"></i>-->
-<!--                    </div>-->
-<!--                    <h4>$78</h4>-->
-<!--                </div>-->
-<!--                <a href="#"><i class="fa-solid fa-cart-shopping shopping"></i></a>-->
-<!---->
-<!--            </div>-->
-<!--            <div class="pro" onclick="window.location.href='sproduct.html';">-->
-<!--                <img src="../ds/img/products/n4.jpg" alt="">-->
-<!--                <div class="des">-->
-<!--                    <span>adidas</span>-->
-<!--                    <h5>Cartoon Astronaut T-Shirts</h5>-->
-<!--                    <div class="star">-->
-<!--                        <i class="fa-solid fa-star"></i>-->
-<!--                        <i class="fa-solid fa-star"></i>-->
-<!--                        <i class="fa-solid fa-star"></i>-->
-<!--                        <i class="fa-solid fa-star"></i>-->
-<!--                        <i class="fa-solid fa-star-half-stroke"></i>-->
-<!--                    </div>-->
-<!--                    <h4>$78</h4>-->
-<!--                </div>-->
-<!--                <a href="#"><i class="fa-solid fa-cart-shopping shopping"></i></a>-->
-<!---->
-<!--            </div>-->
-<!--            <div class="pro" onclick="window.location.href='sproduct.html';">-->
-<!--                <img src="../ds/img/products/n5.jpg" alt="">-->
-<!--                <div class="des">-->
-<!--                    <span>adidas</span>-->
-<!--                    <h5>Cartoon Astronaut T-Shirts</h5>-->
-<!--                    <div class="star">-->
-<!--                        <i class="fa-solid fa-star"></i>-->
-<!--                        <i class="fa-solid fa-star"></i>-->
-<!--                        <i class="fa-solid fa-star"></i>-->
-<!--                        <i class="fa-solid fa-star"></i>-->
-<!--                        <i class="fa-solid fa-star-half-stroke"></i>-->
-<!--                    </div>-->
-<!--                    <h4>$78</h4>-->
-<!--                </div>-->
-<!--                <a href="#"><i class="fa-solid fa-cart-shopping shopping"></i></a>-->
-<!---->
-<!--            </div>-->
-<!--            <div class="pro" onclick="window.location.href='sproduct.html';">-->
-<!--                <img src="../ds/img/products/n6.jpg" alt="">-->
-<!--                <div class="des">-->
-<!--                    <span>adidas</span>-->
-<!--                    <h5>Cartoon Astronaut T-Shirts</h5>-->
-<!--                    <div class="star">-->
-<!--                        <i class="fa-solid fa-star"></i>-->
-<!--                        <i class="fa-solid fa-star"></i>-->
-<!--                        <i class="fa-solid fa-star"></i>-->
-<!--                        <i class="fa-solid fa-star"></i>-->
-<!--                        <i class="fa-solid fa-star-half-stroke"></i>-->
-<!--                    </div>-->
-<!--                    <h4>$78</h4>-->
-<!--                </div>-->
-<!--                <a href="#"><i class="fa-solid fa-cart-shopping shopping"></i></a>-->
-<!---->
-<!--            </div>-->
-<!--            <div class="pro" onclick="window.location.href='sproduct.html';">-->
-<!--                <img src="../ds/img/products/n7.jpg" alt="">-->
-<!--                <div class="des">-->
-<!--                    <span>adidas</span>-->
-<!--                    <h5>Cartoon Astronaut T-Shirts</h5>-->
-<!--                    <div class="star">-->
-<!--                        <i class="fa-solid fa-star"></i>-->
-<!--                        <i class="fa-solid fa-star"></i>-->
-<!--                        <i class="fa-solid fa-star"></i>-->
-<!--                        <i class="fa-solid fa-star"></i>-->
-<!--                        <i class="fa-solid fa-star-half-stroke"></i>-->
-<!--                    </div>-->
-<!--                    <h4>$78</h4>-->
-<!--                </div>-->
-<!--                <a href="#"><i class="fa-solid fa-cart-shopping shopping"></i></a>-->
-<!---->
-<!--            </div>-->
-<!--            <div class="pro" onclick="window.location.href='sproduct.html';">-->
-<!--                <img src="../ds/img/products/n8.jpg" alt="">-->
-<!--                <div class="des">-->
-<!--                    <span>adidas</span>-->
-<!--                    <h5>Cartoon Astronaut T-Shirts</h5>-->
-<!--                    <div class="star">-->
-<!--                        <i class="fa-solid fa-star"></i>-->
-<!--                        <i class="fa-solid fa-star"></i>-->
-<!--                        <i class="fa-solid fa-star"></i>-->
-<!--                        <i class="fa-solid fa-star"></i>-->
-<!--                        <i class="fa-solid fa-star-half-stroke"></i>-->
-<!--                    </div>-->
-<!--                    <h4>$78</h4>-->
-<!--                </div>-->
-<!--                <a href="#"><i class="fa-solid fa-cart-shopping shopping"></i></a>-->
-<!---->
-<!--            </div>-->
         </div>
     </section>
 
     <section id="pagination" class="section-p1">
-        <a href="#">1</a>
-        <a href="#">2</a>
-        <a href="#"><i class="fa-solid fa-arrow-right"></i></a>
+        <?php
+            for($i = 1; $i<= $num_page; $i++){
+                ?>
+                <a href="shop.php?page=<?php echo $i?>"><?php echo $i?></a>
+        <?php
+            }
+        ?>
+        <a href="<?php if($page == $num_page) {echo '#';} else echo 'shop.php?page='.($page + 1)?>"><i class="fa-solid fa-arrow-right"></i></a>
+
     </section>
 
     <section id="newsletter" class="section-p1 section-m1">

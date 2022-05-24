@@ -22,7 +22,7 @@
     <div>
         <ul id="navbar">
             <li><a href="../index.php">Home</a></li>
-            <li><a  class="active" href="shop.php">Shop</a></li>
+            <li><a  class="active" href="shop.php?page=1">Shop</a></li>
             <li><a  class="active" href="bongtai.php">Bông tai</a></li>
             <li><a  class="active" href="daychuyen.php">Dây chuyền</a></li>
             <li><a  class="active" href="vongtay.php">Vòng tay</a></li>
