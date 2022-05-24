@@ -54,9 +54,11 @@
 
 <section id="prodetails" class="section-p1">
     <?php
-        include_once ($_COOKIE['path']. "/Controller/Controller.php");
+        include_once ("../Controller/Controller.php");
         $id = $_GET['id'];
         $product = getProductById($id);
+        $user = getUserById($_COOKIE['id']);
+        $array = explode("|", $product->getImageProduct());
         if(!empty($_GET['message'])) {
             $message = $_GET['message'];
             echo "<script type='text/javascript'>alert('".$message."');</script>";
@@ -64,21 +66,21 @@
     ?>
 
     <div class="single-pro-image">
-        <img src="http://drive.google.com/uc?export=view&id=<?php echo substr($product->getImageProduct(), 32, 33)?>" alt="">
+        <img src="http://drive.google.com/uc?export=view&id=<?php echo substr($array[0], 32, 33)?>" alt="">
 
         <div class="small-img-group">
 
             <div class="small-img-col">
-                <img src="../ds/img/products/f1.jpg" width="100%" id="small-img" alt="">
+                <img src="http://drive.google.com/uc?export=view&id=<?php echo substr($array[1], 32, 33)?>" id="small-img" alt="">
             </div>
             <div class="small-img-col">
-                <img src="../ds/img/products/f2.jpg" width="100%" id="small-img" alt="">
+                <img src="http://drive.google.com/uc?export=view&id=<?php echo substr($array[0], 32, 33)?>" alt="">
             </div>
             <div class="small-img-col">
-                <img src="../ds/img/products/f3.jpg" width="100%" id="small-img" alt="">
+                <img src="http://drive.google.com/uc?export=view&id=<?php echo substr($array[1], 32, 33)?>" alt="">
             </div>
             <div class="small-img-col">
-                <img src="../ds/img/products/f4.jpg" width="100%" id="small-img" alt="">
+                <img src="http://drive.google.com/uc?export=view&id=<?php echo substr($array[0], 32, 33)?>" alt="">
             </div>
 
         </div>
@@ -100,6 +102,7 @@
         <span> <?php echo $product->getDescription() ?> </span>
     </div>
 
+
 </section>
 
 
@@ -114,9 +117,11 @@
             shuffle($listProducts);
             $result = array_slice($listProducts, 0, 4);
             foreach ($result as $value){
+                $arr = explode("|", $value->getImageProduct())
                 ?>
                 <div class="pro" onclick="location.href='../View/sproduct.php?id='+<?php echo $value->getIdProduct() ?>;"&nbsp;>
-                    <img src="http://drive.google.com/uc?export=view&id=<?php echo substr($value->getImageProduct(), 32, 33)?>" alt="">
+                    <img src="http://drive.google.com/uc?export=view&id=<?php echo substr($arr[1], 32, 33)?>" alt="">
+                    <img src="http://drive.google.com/uc?export=view&id=<?php echo substr($arr[0], 32, 33)?>" alt="" class="overplay">
                     <div class="des">
                         <span>adidas</span>
                         <h5><?php echo $value->getNameProduct()?></h5>
@@ -134,7 +139,6 @@
                 <?php
             }
         }
-
         if(isset($_POST["post"])){
 
             $name = $_POST["name"];
@@ -189,7 +193,7 @@
     <div>
         <form action="" method="POST">
 
-            <input readonly type="text" style="border: none;" name="name" value="<?php echo getUserById($id)->getNameUser()?>">
+            <input readonly type="text" style="border: none;" name="name" value="<?php echo $user->getNameUser()?>">
             <br>
             <label> Message: </label> <textarea colls="35" rows="5" name="mes"></textarea>
             <br>
@@ -283,6 +287,8 @@
 
 
 </footer>
+
+
 
 <!-- chuyển đổi ảnh -->
 <script>
