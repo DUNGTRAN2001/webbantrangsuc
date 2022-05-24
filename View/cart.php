@@ -22,7 +22,11 @@
         <div>
             <ul id="navbar">
                 <li><a href="../index.php">Home</a></li>
-                <li><a href="../View/shop.php">Shop</a></li>
+                <li><a  class="active" href="shop.php">Shop</a></li>
+                <li><a  class="active" href="bongtai.php">Bông tai</a></li>
+                <li><a  class="active" href="daychuyen.php">Dây chuyền</a></li>
+                <li><a  class="active" href="vongtay.php">Vòng tay</a></li>
+                <li><a  class="active" href="nhan.php">Nhẫn</a></li>
                 <li><a href="blog.php">Blog</a></li>
                 <li><a href="about.php">About</a></li>
                 <li><a href="contact.php">Contact</a></li>
@@ -57,7 +61,7 @@
     </section>
 
     <section id="cart"  class="section-p1">
-        <table width="100%">
+        <table width="100%" id="order">
             <thead>
                 <tr>
                     <td>Remove</td>
@@ -89,7 +93,7 @@
                                     <td><img src="http://drive.google.com/uc?export=view&id=<?php echo substr($product->getImageProduct(), 32, 33)?>" alt=""></td>
                                     <td><?php echo $product->getNameProduct()?></td>
                                     <td><input style="border: none; width: 70px" type="text" readonly value="<?php echo number_format($product->getPrice(), 3, '.', '.')?>" id="p<?php echo $i?>">VND</td>
-                                    <td><input type="number" value="<?php echo $value->getQuanlity()?>" onchange="Change(<?php echo $i?>)" id="q<?php echo $i ?>"></td>
+                                    <td><input min="1" type="number" value="<?php echo $value->getQuanlity()?>" onchange="Change(<?php echo $i?>)" id="q<?php echo $i ?>"></td>
                                     <td><input  style="border: none; width: 70px" readonly type="text" value="<?php $total = $total + $value->getPrice(); echo number_format($value->getPrice(), 3, '.', '.')?>" id="s<?php echo $i?>">VND</td>
                                 </tr>
                                 <?php
@@ -114,7 +118,7 @@
 
         <div id="subtotal">
             <h3>Cart Totals</h3>
-            <table id="order">
+            <table>
                 <tr>
                     <td>Cart Subtotal</td>
                     <td><input style="border: none; width: 70px;" type="text" readonly value="<?php echo number_format($total, 3, '.', '.')?>" id="cs">VND</td>

@@ -29,13 +29,13 @@ class Model
             if($id == 0)
                 $query = "select * from product where ProductName like '%".$ten."%'";
             if($id == 1)
-                $query = "select * from product where CategoryId = '1' ProductName like '%".$ten."%'";
+                $query = "select * from product where MaterialName = 'Bông tai' and ProductName like '%".$ten."%'";
             if($id == 2)
-                $query = "select * from product where CategoryId = '2' ProductName like '%".$ten."%'";
+                $query = "select * from product where MaterialName = 'Dây chuyền' and ProductName like '%".$ten."%'";
             if($id == 3)
-                $query = "select * from product where CategoryId = '3' ProductName like '%".$ten."%'";
+                $query = "select * from product where MaterialName = 'Vòng tay' and ProductName like '%".$ten."%'";
             if($id == 4)
-                $query = "select * from product where CategoryId = '4' ProductName like '%".$ten."%'";
+                $query = "select * from product where MaterialName = 'Nhẫn' and ProductName like '%".$ten."%'";
             $result =  $this->excuteData($query);
             $i = 0;
             $product = [];

@@ -31,14 +31,15 @@ if(!isset($_SESSION['IS_LOGIN'])){
         <a href="#"><img class="logo" src="ds/img/chototlogo.png" alt=""></a>
         <div>
             <ul id="navbar">
-                <li><a class="active" href="index.php">Home</a></li>
-                <li><a href="View/shop.php">Shop</a></li>
+                <li><a href="index.php">Home</a></li>
+                <li><a  class="active" href="View/shop.php">Shop</a></li>
+                <li><a  class="active" href="View/bongtai.php">Bông tai</a></li>
+                <li><a  class="active" href="View/daychuyen.php">Dây chuyền</a></li>
+                <li><a  class="active" href="View/vongtay.php">Vòng tay</a></li>
+                <li><a  class="active" href="View/nhan.php">Nhẫn</a></li>
                 <li><a href="View/blog.php">Blog</a></li>
                 <li><a href="View/about.php">About</a></li>
                 <li><a href="View/contact.php">Contact</a></li>
-
-
-
                 <li id="lg-bag"><a href="View/cart.php"><i class="fa-solid fa-bag-shopping"></i></a></li>
                 <a href="#" id="close"><i class="fa-solid fa-xmark"></i></a>
                 <nav role="navigation">
@@ -68,7 +69,7 @@ if(!isset($_SESSION['IS_LOGIN'])){
         <h2>Super value deals</h2>
         <h1>On all products</h1>
         <p>Save more with coupon % up to 70% off ❤ </p>
-        <button>Shop Now</button>
+        <button><a href="View/shop.php">Shop Now</a></button>
     </section>
 
     <section id="feature" class="section-p1">
@@ -105,6 +106,7 @@ if(!isset($_SESSION['IS_LOGIN'])){
             <?php
             include_once ("Controller/Controller.php");
             checkOrder($_COOKIE['id']);
+            $listProducts = getListProduct("", 0);
             if(isset($listProducts)){
                 shuffle($listProducts);
                 $result = array_slice($listProducts, 0, 8);

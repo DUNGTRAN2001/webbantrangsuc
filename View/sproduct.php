@@ -22,7 +22,11 @@
     <div>
         <ul id="navbar">
             <li><a href="../index.php">Home</a></li>
-            <li><a href="../View/shop.php">Shop</a></li>
+            <li><a  class="active" href="shop.php">Shop</a></li>
+            <li><a  class="active" href="bongtai.php">Bông tai</a></li>
+            <li><a  class="active" href="daychuyen.php">Dây chuyền</a></li>
+            <li><a  class="active" href="vongtay.php">Vòng tay</a></li>
+            <li><a  class="active" href="nhan.php">Nhẫn</a></li>
             <li><a href="blog.php">Blog</a></li>
             <li><a href="about.php">About</a></li>
             <li><a href="contact.php">Contact</a></li>
@@ -105,7 +109,7 @@
     <div class="pro-container">
 
         <?php
-
+        $listProducts = getListProduct("", 0);
         if(isset($listProducts)){
             shuffle($listProducts);
             $result = array_slice($listProducts, 0, 4);
