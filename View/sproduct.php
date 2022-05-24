@@ -135,9 +135,69 @@
             }
         }
 
+        if(isset($_POST["post"])){
+
+            $name = $_POST["name"];
+
+            $mes = $_POST["mes"];
+
+            #WRITE DOWN COMMENTS#
+
+            $write = fopen("com.txt", "a+");
+
+            fwrite($write, "<b><u>$name</u></b><br>$mes<br>");
+
+            fclose($write);
+
+            #DISPLAY COMMENTS#
+
+            $read = fopen("com.txt", "r+t");
+
+            echo "All comments:";
+
+            while(!feof($read)){
+
+                echo fread($read, 1024);
+
+            }
+
+            fclose($read);
+
+        }
+
+        else {
+
+            #DISPLAY COMMENTS#
+
+            $read = fopen("com.txt", "r+t");
+
+            echo "All comments:";
+
+            while(!feof($read)){
+
+                echo fread($read, 1024);
+
+            }
+
+            fclose($read);
+
+        }
         ?>
 
     </div>
+
+    <div>
+        <form action="" method="POST">
+
+            <input readonly type="text" style="border: none;" name="name" value="<?php echo getUserById($id)->getNameUser()?>">
+            <br>
+            <label> Message: </label> <textarea colls="35" rows="5" name="mes"></textarea>
+            <br>
+            <input type="submit" name="post" value="Post">
+
+        </form>
+    </div>
+
 
 </section>
 

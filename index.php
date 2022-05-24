@@ -111,9 +111,11 @@ if(!isset($_SESSION['IS_LOGIN'])){
                 shuffle($listProducts);
                 $result = array_slice($listProducts, 0, 8);
                 foreach ($result as $value){
+                    $arr = explode("|", $value->getImageProduct());
                     ?>
                     <div class="pro" onclick="location.href='View/sproduct.php?id='+<?php echo $value->getIdProduct() ?>;"&nbsp;>
-                        <img src="http://drive.google.com/uc?export=view&id=<?php echo substr($value->getImageProduct(), 32, 33)?>" alt="">
+                        <img src="http://drive.google.com/uc?export=view&id=<?php echo substr($arr[1], 32, 33)?>" alt="">
+                        <img src="http://drive.google.com/uc?export=view&id=<?php echo substr($arr[0], 32, 33)?>" alt="" class="overplay">
                         <div class="des">
                             <span>adidas</span>
                             <h5><?php echo $value->getNameProduct()?></h5>
@@ -152,9 +154,11 @@ if(!isset($_SESSION['IS_LOGIN'])){
                 shuffle($listProducts);
                 $result = array_slice($listProducts, 0, 8);
                 foreach ($result as $value){
+                    $arr = explode("|", $value->getImageProduct());
                     ?>
                     <div class="pro" onclick="location.href='View/sproduct.php?id='+<?php echo $value->getIdProduct() ?>;"&nbsp;>
-                        <img src="http://drive.google.com/uc?export=view&id=<?php echo substr($value->getImageProduct(), 32, 33)?>" alt="">
+                        <img src="http://drive.google.com/uc?export=view&id=<?php echo substr($arr[1], 32, 33)?>" alt="">
+                        <img src="http://drive.google.com/uc?export=view&id=<?php echo substr($arr[0], 32, 33)?>" alt="" class="overplay">
                         <div class="des">
                             <span>adidas</span>
                             <h5><?php echo $value->getNameProduct()?></h5>

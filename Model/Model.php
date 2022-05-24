@@ -39,7 +39,7 @@ class Model
             $result =  $this->excuteData($query);
             $i = 0;
             $product = [];
-            if ($result->fetch_row()) {
+            if ($result) {
                 while ($row = mysqli_fetch_array($result)) {
                     $product[$i++] = new Product($row[0], $row[1], $row[2], $row[3], $row[4], $row[5], $row[6], $row[7]);
                 }
