@@ -74,10 +74,10 @@
         include_once ("../Controller/Controller.php");
         if(isset($_POST['search'])){
             $key = $_POST['key'];
-            $list = getListProduct($key, 1);
+            $list = getListProduct($key, 3);
         }
         else{
-            $list = getListProduct("", 1);
+            $list = getListProduct("", 3);
         }
         foreach ($list as $value){
             ?>
