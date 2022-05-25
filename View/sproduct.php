@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Chợ tốt demo1</title>
+    <title>Web bán hàng</title>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css" />
 
     <link rel="stylesheet" href="../ds/fontawesome-free-6.1.1-web/fontawesome-free-6.1.1-web/css/all.min.css">
@@ -18,30 +18,44 @@
 
 
 <section id="header">
-    <a href="#"><img class="logo" src="../ds/img/chototlogo.png" alt=""></a>
+    <a href="../index.php"><img class="logo" src="../ds/img/chototlogo.png" alt=""></a>
     <div>
         <ul id="navbar">
             <li><a href="../index.php">Home</a></li>
-            <li><a  class="active" href="shop.php?page=1">Shop</a></li>
-            <li><a  class="active" href="bongtai.php">Bông tai</a></li>
-            <li><a  class="active" href="daychuyen.php">Dây chuyền</a></li>
-            <li><a  class="active" href="vongtay.php">Vòng tay</a></li>
-            <li><a  class="active" href="nhan.php">Nhẫn</a></li>
+            <li><a  class="active" href="shop.php?page=1">Shop</a>
+                <ul class="dropdown">
+                    <li><a   href="bongtai.php">Bông tai</a></li>
+                    <li><a   href="daychuyen.php">Dây chuyền</a></li>
+                    <li><a   href="vongtay.php">Vòng tay</a></li>
+                    <li><a   href="nhan.php">Nhẫn</a></li>
+                </ul>            
+            </li>
             <li><a href="blog.php">Blog</a></li>
             <li><a href="about.php">About</a></li>
             <li><a href="contact.php">Contact</a></li>
             <li id="lg-bag"><a href="cart.php"><i class="fa-solid fa-bag-shopping"></i></a></li>
             <a href="#" id="close"><i class="fa-solid fa-xmark"></i></a>
-            <nav role="navigation">
-                <ul>
-                    <li><a href="#"><i class="fa-solid fa-user"></i></a>
-                        <ul class="dropdown">
-                            <li><a href="profile.php"><i class="fa-solid fa-gears">Setting</i></a></li>
-                            <li><a href="../View/logout.php"><i class="fa-solid fa-right-from-bracket">Logout</i></a></li>
+            <?php
+                if(isset($_COOKIE['id'])){
+                    ?>
+                    <nav role="navigation">
+                        <ul>
+                            <li><a href="#"><i class="fa-solid fa-user"></i></a>
+                                <ul class="dropdown">
+                                    <li><a href="../View/profile.php">Profile</a></li>
+                                    <li><a href="../View/logout.php">Logout</i></a></li>
+                                </ul>
+                            </li>
                         </ul>
-                    </li>
-                </ul>
-            </nav>
+                    </nav>
+                    <?php
+                }
+                else {
+                    ?>
+                    <li><a href="../View/login.php">Login</a></li>
+                    <?php
+                }
+                ?>
         </ul>
     </div>
 
@@ -88,7 +102,7 @@
     </div>
 
     <div class="single-pro-details">
-        <h6>Home / <?php echo $product->getMaterialName() ?></h6>
+        <h2>Home / <?php echo $product->getMaterialName() ?></h2>
         <h4><?php echo $product->getNameProduct() ?></h4>
         <h2><?php echo number_format($product->getPrice(), 3, '.', '.')?>VND</h2>
 
@@ -134,72 +148,14 @@
                         </div>
                         <h4><?php echo number_format($value->getPrice(), 3, '.', '.')?>VND</h4>
                     </div>
-                    <a href="#"><i class="fa-solid fa-cart-shopping shopping"></i></a>
+                   
                 </div>
                 <?php
             }
         }
-        if(isset($_POST["post"])){
-
-            $name = $_POST["name"];
-
-            $mes = $_POST["mes"];
-
-            #WRITE DOWN COMMENTS#
-
-            $write = fopen("com.txt", "a+");
-
-            fwrite($write, "<b><u>$name</u></b><br>$mes<br>");
-
-            fclose($write);
-
-            #DISPLAY COMMENTS#
-
-            $read = fopen("com.txt", "r+t");
-
-            echo "All comments:";
-
-            while(!feof($read)){
-
-                echo fread($read, 1024);
-
-            }
-
-            fclose($read);
-
-        }
-
-        else {
-
-            #DISPLAY COMMENTS#
-
-            $read = fopen("com.txt", "r+t");
-
-            echo "All comments:";
-
-            while(!feof($read)){
-
-                echo fread($read, 1024);
-
-            }
-
-            fclose($read);
-
-        }
+        
         ?>
 
-    </div>
-
-    <div>
-        <form action="" method="POST">
-
-            <input readonly type="text" style="border: none;" name="name" value="<?php echo $user->getNameUser()?>">
-            <br>
-            <label> Message: </label> <textarea colls="35" rows="5" name="mes"></textarea>
-            <br>
-            <input type="submit" name="post" value="Post">
-
-        </form>
     </div>
 
 

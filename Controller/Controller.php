@@ -132,13 +132,13 @@ if (isset($_POST['saveChange'])) {
 if (isset($_POST['add'])) {
     $quantity = $_POST['quantity'];
     $productId = $_POST['productId'];
-    $price = $_POST['price'];
+    $price = $_POST['price']*$quantity;
 
     $sql = "select * from orderdetail where Productid = '" . $productId . "' and OrderId = '".$_COOKIE['orderId']."'";
     $result = Model::getInstance()->excuteData($sql);
     if($result->fetch_row()){
 
-        $sql1 = "UPDATE orderdetail SET Quantity = Quantity + 1, Price = ".$price." * Quantity WHERE Productid ='" . $productId . "'";
+        $sql1 = "UPDATE orderdetail SET Quantity = Quantity + ".$quantity.", Price = ".$price." * Quantity WHERE Productid ='" . $productId . "'";
         Model::getInstance()->excuteData($sql1);
     }else{
 
