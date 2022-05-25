@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -22,13 +21,13 @@
     <div>
         <ul id="navbar">
             <li><a href="../index.php">Home</a></li>
-            <li><a  class="active" href="shop.php?page=1">Shop</a>
+            <li><a class="active" href="shop.php?page=1">Shop</a>
                 <ul class="dropdown">
-                    <li><a   href="bongtai.php">Bông tai</a></li>
-                    <li><a   href="daychuyen.php">Dây chuyền</a></li>
-                    <li><a   href="vongtay.php">Vòng tay</a></li>
-                    <li><a   href="nhan.php">Nhẫn</a></li>
-                </ul>            
+                    <li><a href="bongtai.php">Bông tai</a></li>
+                    <li><a href="daychuyen.php">Dây chuyền</a></li>
+                    <li><a href="vongtay.php">Vòng tay</a></li>
+                    <li><a href="nhan.php">Nhẫn</a></li>
+                </ul>
             </li>
             <li><a href="blog.php">Blog</a></li>
             <li><a href="about.php">About</a></li>
@@ -36,26 +35,25 @@
             <li id="lg-bag"><a href="cart.php"><i class="fa-solid fa-bag-shopping"></i></a></li>
             <a href="#" id="close"><i class="fa-solid fa-xmark"></i></a>
             <?php
-                if(isset($_COOKIE['id'])){
-                    ?>
-                    <nav role="navigation">
-                        <ul>
-                            <li><a href="#"><i class="fa-solid fa-user"></i></a>
-                                <ul class="dropdown">
-                                    <li><a href="../View/profile.php">Profile</a></li>
-                                    <li><a href="../View/logout.php">Logout</i></a></li>
-                                </ul>
-                            </li>
-                        </ul>
-                    </nav>
-                    <?php
-                }
-                else {
-                    ?>
-                    <li><a href="../View/login.php">Login</a></li>
-                    <?php
-                }
+            if (isset($_COOKIE['id'])) {
                 ?>
+                <nav role="navigation">
+                    <ul>
+                        <li><a href="#"><i class="fa-solid fa-user"></i></a>
+                            <ul class="dropdown">
+                                <li><a href="../View/profile.php">Profile</a></li>
+                                <li><a href="../View/logout.php">Logout</i></a></li>
+                            </ul>
+                        </li>
+                    </ul>
+                </nav>
+                <?php
+            } else {
+                ?>
+                <li><a href="../View/login.php">Login</a></li>
+                <?php
+            }
+            ?>
         </ul>
     </div>
 </section>
@@ -67,7 +65,8 @@
             <li class="manage"><a href="order.php">Order management <i class="fa-solid fa-cart-shopping"></i></a></li>
             <li class="manage"><a href="statistical.php">Revenue statistics <i class="fa-solid fa-chart-line"></i></a>
             </li>
-            <li class="manage"><a href="../View/logout.php">Log out <i class="fa-solid fa-right-from-bracket"></i></a></li>
+            <li class="manage"><a href="../View/logout.php">Log out <i class="fa-solid fa-right-from-bracket"></i></a>
+            </li>
         </ul>
     </div>
     <div class="main-table">
@@ -82,34 +81,41 @@
                 <th>Phone</th>
                 <th>Action</th>
             </tr>
-                <?php
-                include_once("../Controller/Controller.php");
-                if(!empty($_GET['message'])) {
-                    $message = $_GET['message'];
-                    echo "<script type='text/javascript'>alert('".$message."');</script>";
-                }
-                $listUser = getAllUsers();
-                if (isset($listUser)) {
-                    $i = 0;
-                    foreach ($listUser as $user) {
-                        ?>
-            <tr>
-                        <td><input type="hidden" style="border: none" value="<?php echo $user->getEmail()?>" id="uEmail<?php echo $i?>"><input type="hidden" id="IdUser<?php echo $i?>" value="<?php echo $user->getIdUser()?>"><?php echo $user->getEmail() ?></td>
-                        <td><input type="hidden" style="border: none" value="<?php echo $user->getNameUser()?>" id="uName<?php echo $i?>"><?php echo $user->getNameUser() ?></td>
-                        <td><input type="hidden" style="border: none" value="<?php echo $user->getAddress()?>" id="uAddress<?php echo $i?>"><?php echo $user->getAddress() ?></td>
-                        <td><input type="hidden" style="border: none" value="<?php echo $user->getPhone()?>" id="uPhone<?php echo $i?>"><?php echo $user->getPhone() ?></td>
+            <?php
+            include_once("../Controller/Controller.php");
+            if (!empty($_GET['message'])) {
+                $message = $_GET['message'];
+                echo "<script type='text/javascript'>alert('" . $message . "');</script>";
+            }
+            $listUser = getAllUsers();
+            if (isset($listUser)) {
+                $i = 0;
+                foreach ($listUser as $user) {
+                    ?>
+                    <tr>
+                        <td><input type="hidden" style="border: none" value="<?php echo $user->getEmail() ?>"
+                                   id="uEmail<?php echo $i ?>"><input type="hidden" id="IdUser<?php echo $i ?>"
+                                                                      value="<?php echo $user->getIdUser() ?>"><?php echo $user->getEmail() ?>
+                        </td>
+                        <td><input type="hidden" style="border: none" value="<?php echo $user->getNameUser() ?>"
+                                   id="uName<?php echo $i ?>"><?php echo $user->getNameUser() ?></td>
+                        <td><input type="hidden" style="border: none" value="<?php echo $user->getAddress() ?>"
+                                   id="uAddress<?php echo $i ?>"><?php echo $user->getAddress() ?></td>
+                        <td><input type="hidden" style="border: none" value="<?php echo $user->getPhone() ?>"
+                                   id="uPhone<?php echo $i ?>"><?php echo $user->getPhone() ?></td>
                         <td>
-                            <a href="#" onclick="Edit(<?php echo $i?>); return false;"><span class="edit-icon"><i class="fa-solid fa-pen-to-square"></i></span></a>
+                            <a href="#" onclick="Edit(<?php echo $i ?>); return false;"><span class="edit-icon"><i
+                                            class="fa-solid fa-pen-to-square"></i></span></a>
                             <form method="post" action="../Controller/Controller.php">
-                                <input type="hidden" name="uId" value="<?php echo $user->getIdUser()?>">
+                                <input type="hidden" name="uId" value="<?php echo $user->getIdUser() ?>">
                             </form>
                         </td>
-            </tr>
-                        <?php
-                        $i++;
-                    }
+                    </tr>
+                    <?php
+                    $i++;
                 }
-                ?>
+            }
+            ?>
 
         </table>
         <img src="../ds/img/p7.png" alt="" class="anhmay">
@@ -185,15 +191,16 @@
         });
 
     })
-    function Edit(i)
-    {
-        document.getElementById('idS').value = document.getElementById('IdUser'+i).value
-        document.getElementById('emailS').value = document.getElementById('uEmail'+i).value
-        document.getElementById('phoneS').value = document.getElementById('uPhone'+i).value
-        document.getElementById('addressS').value = document.getElementById('uAddress'+i).value
-        document.getElementById('usernameS').value = document.getElementById('uName'+i).value
+
+    function Edit(i) {
+        document.getElementById('idS').value = document.getElementById('IdUser' + i).value
+        document.getElementById('emailS').value = document.getElementById('uEmail' + i).value
+        document.getElementById('phoneS').value = document.getElementById('uPhone' + i).value
+        document.getElementById('addressS').value = document.getElementById('uAddress' + i).value
+        document.getElementById('usernameS').value = document.getElementById('uName' + i).value
     }
-    function Delete(i){
+
+    function Delete(i) {
 
     }
 </script>

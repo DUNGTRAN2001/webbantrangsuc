@@ -5,7 +5,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>JEWELRYxPALACE</title>
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css" />
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css"/>
 
     <link rel="stylesheet" href="../ds/fontawesome-free-6.1.1-web/fontawesome-free-6.1.1-web/css/all.min.css">
 
@@ -17,38 +17,39 @@
 
 
 <?php
-    error_reporting(E_ERROR | E_PARSE);
-    ?>
-    <div class="reponsive">
-            <div class="reponsive-header" >
-                <ul>
-                    <li><a href="../index.php">Home</a></li>
-                    <li><a class="reponsive-active" href="shop.php?page=1">Shop</a>
-                        <ul class="shop-list">
-                            <li><a   href="bongtai.php">Bông tai</a></li>
-                            <li><a   href="daychuyen.php">Dây chuyền</a></li>
-                            <li><a   href="vongtay.php">Vòng tay</a></li>
-                            <li><a   href="nhan.php">Nhẫn</a></li>
-                        </ul>            
-                    </li>
-                    <li><a href="blog.php">Blog</a></li>
-                    <li><a href="about.php">About</a></li>
-                    <li><a href="contact.php">Contact</a></li>
-                    <li>
-                    <form method="post">
-                        <input type="text" placeholder="Search... " name="key" class="search-input search-reponsive">
-                        <button type="submit" id="search" name="search" class="btn-search btn-reponsive"> <i class="fa-solid fa-magnifying-glass"></i> </button>
-                    </form>
-                    </li>
-                        <li><a href="#"><i class="fa-solid fa-user"></i></a>
-                                    <ul class=" avt-reponsive">
-                                        <li><a href="../View/profile.php">Profile</a></li>
-                                        <li><a href="../View/logout.php">Logout</i></a></li>
-                                    </ul>
-                    </li>
+error_reporting(E_ERROR | E_PARSE);
+?>
+<div class="reponsive">
+    <div class="reponsive-header">
+        <ul>
+            <li><a href="../index.php">Home</a></li>
+            <li><a class="reponsive-active" href="shop.php?page=1">Shop</a>
+                <ul class="shop-list">
+                    <li><a href="bongtai.php">Bông tai</a></li>
+                    <li><a href="daychuyen.php">Dây chuyền</a></li>
+                    <li><a href="vongtay.php">Vòng tay</a></li>
+                    <li><a href="nhan.php">Nhẫn</a></li>
                 </ul>
-            </div>
-        </div>
+            </li>
+            <li><a href="blog.php">Blog</a></li>
+            <li><a href="about.php">About</a></li>
+            <li><a href="contact.php">Contact</a></li>
+            <li>
+                <form method="post">
+                    <input type="text" placeholder="Search... " name="key" class="search-input search-reponsive">
+                    <button type="submit" id="search" name="search" class="btn-search btn-reponsive"><i
+                                class="fa-solid fa-magnifying-glass"></i></button>
+                </form>
+            </li>
+            <li><a href="#"><i class="fa-solid fa-user"></i></a>
+                <ul class=" avt-reponsive">
+                    <li><a href="../View/profile.php">Profile</a></li>
+                    <li><a href="../View/logout.php">Logout</i></a></li>
+                </ul>
+            </li>
+        </ul>
+    </div>
+</div>
 
 
 <section id="header">
@@ -56,46 +57,46 @@
     <div>
         <ul id="navbar">
             <li><a href="../index.php">Home</a></li>
-            <li><a  class="active" href="shop.php?page=1">Shop</a>
+            <li><a class="active" href="shop.php?page=1">Shop</a>
                 <ul class="dropdown">
-                    <li><a   href="bongtai.php">Bông tai</a></li>
-                    <li><a   href="daychuyen.php">Dây chuyền</a></li>
-                    <li><a   href="vongtay.php">Vòng tay</a></li>
-                    <li><a   href="nhan.php">Nhẫn</a></li>
-                </ul>            
-            </li>   
+                    <li><a href="bongtai.php">Bông tai</a></li>
+                    <li><a href="daychuyen.php">Dây chuyền</a></li>
+                    <li><a href="vongtay.php">Vòng tay</a></li>
+                    <li><a href="nhan.php">Nhẫn</a></li>
+                </ul>
+            </li>
             <li><a href="blog.php">Blog</a></li>
             <li><a href="about.php">About</a></li>
             <li><a href="contact.php">Contact</a></li>
             <li>
-                    <form method="post">
-                        <input type="text" placeholder="Search... " name="key" class="search-input">
-                        <button type="submit" id="search" name="search" class="btn-search"> <i class="fa-solid fa-magnifying-glass"></i> </button>
-                    </form>
-                </li>
+                <form method="post">
+                    <input type="text" placeholder="Search... " name="key" class="search-input">
+                    <button type="submit" id="search" name="search" class="btn-search"><i
+                                class="fa-solid fa-magnifying-glass"></i></button>
+                </form>
+            </li>
             <li id="lg-bag"><a href="cart.php"><i class="fa-solid fa-bag-shopping"></i></a></li>
             <a href="#" id="close"><i class="fa-solid fa-xmark"></i></a>
             <?php
-                if(isset($_COOKIE['id'])){
-                    ?>
-                    <nav role="navigation">
-                        <ul>
-                            <li><a href="#"><i class="fa-solid fa-user"></i></a>
-                                <ul class="dropdown">
-                                    <li><a href="../View/profile.php">Profile</a></li>
-                                    <li><a href="../View/logout.php">Logout</i></a></li>
-                                </ul>
-                            </li>
-                        </ul>
-                    </nav>
-                    <?php
-                }
-                else {
-                    ?>
-                    <li><a href="../View/login.php">Login</a></li>
-                    <?php
-                }
+            if (isset($_COOKIE['id'])) {
                 ?>
+                <nav role="navigation">
+                    <ul>
+                        <li><a href="#"><i class="fa-solid fa-user"></i></a>
+                            <ul class="dropdown">
+                                <li><a href="../View/profile.php">Profile</a></li>
+                                <li><a href="../View/logout.php">Logout</i></a></li>
+                            </ul>
+                        </li>
+                    </ul>
+                </nav>
+                <?php
+            } else {
+                ?>
+                <li><a href="../View/login.php">Login</a></li>
+                <?php
+            }
+            ?>
         </ul>
     </div>
 
@@ -110,32 +111,33 @@
 
     <h2>#stayhome</h2>
 
-    <p>𝓼𝓪𝓿𝓮 𝓶𝓸𝓻𝓮 𝔀𝓲𝓽𝓱 𝓬𝓸𝓾𝓹𝓸𝓷𝓼  𝓾𝓹 𝓽𝓸 𝓸𝓯𝓯❤️ </p>
+    <p>𝓼𝓪𝓿𝓮 𝓶𝓸𝓻𝓮 𝔀𝓲𝓽𝓱 𝓬𝓸𝓾𝓹𝓸𝓷𝓼 𝓾𝓹 𝓽𝓸 𝓸𝓯𝓯❤️ </p>
 
 </section>
 
-<section id="product1"  class="section-p1">
+<section id="product1" class="section-p1">
 
     <div class="pro-container">
         <!-- Lệnh onclick bấm vào ra trang details -->
         <?php
-        include_once ("../Controller/Controller.php");
-        if(isset($_POST['search'])){
+        include_once("../Controller/Controller.php");
+        if (isset($_POST['search'])) {
             $key = $_POST['key'];
             $list = getListProduct($key, 2);
-        }
-        else{
+        } else {
             $list = getListProduct("", 2);
         }
-        foreach ($list as $value){
+        foreach ($list as $value) {
             $arr = explode("|", $value->getImageProduct())
             ?>
-            <div class="pro" onclick="location.href='../View/sproduct.php?id='+<?php echo $value->getIdProduct() ?>;"&nbsp;>
-                <img src="http://drive.google.com/uc?export=view&id=<?php echo substr($arr[1], 32, 33)?>" alt="">
-                <img src="http://drive.google.com/uc?export=view&id=<?php echo substr($arr[0], 32, 33)?>" alt="" class="overplay">
+            <div class="pro" onclick="location.href='../View/sproduct.php?id='+<?php echo $value->getIdProduct() ?>;"
+                 &nbsp;>
+                <img src="http://drive.google.com/uc?export=view&id=<?php echo substr($arr[1], 32, 33) ?>" alt="">
+                <img src="http://drive.google.com/uc?export=view&id=<?php echo substr($arr[0], 32, 33) ?>" alt=""
+                     class="overplay">
                 <div class="des">
                     <span>adidas</span>
-                    <h5><?php echo $value->getNameProduct()?></h5>
+                    <h5><?php echo $value->getNameProduct() ?></h5>
                     <div class="star">
                         <i class="fa-solid fa-star"></i>
                         <i class="fa-solid fa-star"></i>
@@ -143,9 +145,9 @@
                         <i class="fa-solid fa-star"></i>
                         <i class="fa-solid fa-star-half-stroke"></i>
                     </div>
-                    <h4><?php echo number_format($value->getPrice(), 3, '.', '.')?>VND</h4>
+                    <h4><?php echo number_format($value->getPrice(), 3, '.', '.') ?>VND</h4>
                 </div>
-               
+
             </div>
             <?php
         }
@@ -196,7 +198,6 @@
     </div>
 
 
-
     <div class="col">
         <h4>About</h4>
         <a href="#">About Us</a>
@@ -230,15 +231,6 @@
     <div class="copyright">
         <p>© 2022, chotot - All Rights Reverved</p>
     </div>
-
-
-
-
-
-
-
-
-
 
 
 </footer>

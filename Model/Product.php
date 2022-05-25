@@ -34,8 +34,6 @@ class Product
     }
 
 
-
-
     /**
      * @return mixed
      */

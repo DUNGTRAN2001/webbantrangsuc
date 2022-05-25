@@ -4,6 +4,7 @@ class Category
 {
     private $id_category;
     private $name_category;
+
     /**
      * @return mixed
      */

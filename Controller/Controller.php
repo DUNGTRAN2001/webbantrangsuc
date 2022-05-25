@@ -1,11 +1,12 @@
 <?php
 $session = session_id();
-if(empty($session)){
+if (empty($session)) {
     session_start();
 }
 include_once($_COOKIE['path'] . '/Model/Model.php');
 
-function getListProduct($key, $id){
+function getListProduct($key, $id)
+{
     return Model::getInstance()->getAllProducts($key, $id);
 }
 
@@ -32,9 +33,9 @@ if (isset($_POST['signin'])) {
                 setcookie('password', "", time() + 60 * 60 * 24 * 365, '/');
             }
             $_SESSION['IS_LOGIN'] = 'yes';
-            if($user[0] == 1){
+            if ($user[0] == 1) {
                 header('location:../View/admin.php');
-            }else{
+            } else {
                 header('location:../index.php');
             }
         } else {
@@ -132,17 +133,17 @@ if (isset($_POST['saveChange'])) {
 if (isset($_POST['add'])) {
     $quantity = $_POST['quantity'];
     $productId = $_POST['productId'];
-    $price = $_POST['price']*$quantity;
+    $price = $_POST['price'];
 
-    $sql = "select * from orderdetail where Productid = '" . $productId . "' and OrderId = '".$_COOKIE['orderId']."'";
+    $sql = "select * from orderdetail where Productid = '" . $productId . "' and OrderId = '" . $_COOKIE['orderId'] . "'";
     $result = Model::getInstance()->excuteData($sql);
-    if($result->fetch_row()){
+    if ($result->fetch_row()) {
 
-        $sql1 = "UPDATE orderdetail SET Quantity = Quantity + ".$quantity.", Price = ".$price." * Quantity WHERE Productid ='" . $productId . "'";
+        $sql1 = "UPDATE orderdetail SET Quantity = Quantity + " . $quantity . ", Price = " . $price . " * Quantity WHERE Productid ='" . $productId . "'";
         Model::getInstance()->excuteData($sql1);
-    }else{
+    } else {
 
-        $sql2 = "insert into orderdetail (OrderId, Productid, Quantity, Price) values ('".$_COOKIE['orderId']."', '$productId', '$quantity', '".$price."')";
+        $sql2 = "insert into orderdetail (OrderId, Productid, Quantity, Price) values ('" . $_COOKIE['orderId'] . "', '$productId', '$quantity', '" . $price * $quantity . "')";
         Model::getInstance()->excuteData($sql2);
 
     }
@@ -154,7 +155,7 @@ function checkOrder($UserId)
 {
     $sql = "select * from orders where UserId = '" . $UserId . "' and status = '0'";
     $result = Model::getInstance()->excuteData($sql);
-    if (mysqli_num_rows($result)>0) {
+    if (mysqli_num_rows($result) > 0) {
         $order = mysqli_fetch_array($result);
         setcookie('orderId', $order[0], time() + 60 * 60 * 24 * 365, '/');
     } else {
@@ -168,39 +169,44 @@ function checkOrder($UserId)
     }
 }
 
-function checkOrderId($oderId){
+function checkOrderId($oderId)
+{
     $sql = "select * from orders where OrderId  = '" . $oderId . "' and status = '0'";
     $result = Model::getInstance()->excuteData($sql);
-    if($result->fetch_row()){
+    if ($result->fetch_row()) {
         return true;
     }
     return false;
 }
-function getlistOrder(){
+
+function getlistOrder()
+{
     return Model::getInstance()->getAllOrderDetail($_COOKIE['orderId']);
 }
 
-if(isset($_POST['payment'])){
+if (isset($_POST['payment'])) {
     $sql = "UPDATE orders SET status = '1' WHERE OrderId ='" . $_COOKIE['orderId'] . "'";
     Model::getInstance()->excuteData($sql);
     checkOrder($_COOKIE['id']);
     header('location:../View/cart.php?message=Payment success!');
 }
 
-function getAllUsers(){
+function getAllUsers()
+{
     return Model::getInstance()->getAllUser();
 }
-if(isset($_GET['oId']) && isset($_GET['pId'])){
+
+if (isset($_GET['oId']) && isset($_GET['pId'])) {
     $oderId = $_GET['oId'];
     $productId = $_GET['pId'];
 
-    $sql = "delete from orderdetail where OrderId = '".$oderId."' and Productid = '".$productId."'";
+    $sql = "delete from orderdetail where OrderId = '" . $oderId . "' and Productid = '" . $productId . "'";
     Model::getInstance()->excuteData($sql);
 
     header('location:../View/cart.php?message=Delete success!');
 }
 
-if(isset($_POST['edit_admin'])){
+if (isset($_POST['edit_admin'])) {
     $id = $_POST['idS'];
     $username = $_POST['usernameS'];
     $email = $_POST['emailS'];
@@ -211,17 +217,17 @@ if(isset($_POST['edit_admin'])){
         $sql = "UPDATE users SET UserName = '" . $username . "',Email = '" . $email . "', Phone = '" . $phone . "', Address = '" . $address . "' WHERE UserId ='" . $id . "'";
         Model::getInstance()->excuteData($sql);
         header('location:../View/user.php?message=Update success!');
-    }catch (Exception $e){
-        header('location:../View/user.php?message='.$e->getMessage().'!');
+    } catch (Exception $e) {
+        header('location:../View/user.php?message=' . $e->getMessage() . '!');
     }
 
 }
 
-if(isset($_POST['delete_user'])){
+if (isset($_POST['delete_user'])) {
     $id = $_POST['uId'];
-    if($id == $_COOKIE['id']){
+    if ($id == $_COOKIE['id']) {
         header("location:../View/user.php?message=Can not delete the account that is logged in!");
-    }else{
+    } else {
 //        $sql = "select OrderId from orders where UserId = '".$id."'";
 //        $data = Model::getInstance()->excuteData($sql);
 //        $array=[];
@@ -240,7 +246,7 @@ if(isset($_POST['delete_user'])){
     }
 }
 
-if(isset($_POST['add_admin'])){
+if (isset($_POST['add_admin'])) {
     $username = $_POST['username'];
     $password = $_POST['password'];
     $email = $_POST['email'];
@@ -251,19 +257,22 @@ if(isset($_POST['add_admin'])){
     $result = Model::getInstance()->excuteData($sql);
     header("location:../View/user.php?message=Add success!");
 }
-function getAllOrder(){
+function getAllOrder()
+{
     return Model::getInstance()->getAllOrder();
 }
-function getPriceByOrderId($OrderId){
+
+function getPriceByOrderId($OrderId)
+{
     return Model::getInstance()->getPriceByOrderId($OrderId);
 }
 
-if(isset($_POST['submit_order'])){
-    if(!empty($_POST['check_list'])){
-        foreach($_POST['check_list'] as $selected){
-            $sql = "update orders set ship = '1' where OrderId = '".$selected."'";
+if (isset($_POST['submit_order'])) {
+    if (!empty($_POST['check_list'])) {
+        foreach ($_POST['check_list'] as $selected) {
+            $sql = "update orders set ship = '1' where OrderId = '" . $selected . "'";
             Model::getInstance()->excuteData($sql);
         }
         header("location:../View/order.php?message=Successful shipping confirmation!");
-    }else header("location:../View/order.php?message=There are no items selected!");
+    } else header("location:../View/order.php?message=There are no items selected!");
 }
