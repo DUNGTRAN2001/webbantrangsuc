@@ -11,7 +11,7 @@ if(!isset($_SESSION['IS_LOGIN'])){
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Web bán hàng</title>
+    <title>JEWELRYxPALACE</title>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css" />
 
     <link rel="stylesheet" href="../ds/fontawesome-free-6.1.1-web/fontawesome-free-6.1.1-web/css/all.min.css">
@@ -22,7 +22,34 @@ if(!isset($_SESSION['IS_LOGIN'])){
 </head>
 <body>
     
-
+<?php
+    error_reporting(E_ERROR | E_PARSE);
+    ?>
+    <div class="reponsive">
+            <div class="reponsive-header" >
+                <ul>
+                    <li><a href="../index.php">Home</a></li>
+                    <li><a  href="shop.php?page=1">Shop</a>
+                        <ul class="shop-list">
+                            <li><a   href="bongtai.php">Bông tai</a></li>
+                            <li><a   href="daychuyen.php">Dây chuyền</a></li>
+                            <li><a   href="vongtay.php">Vòng tay</a></li>
+                            <li><a   href="nhan.php">Nhẫn</a></li>
+                        </ul>            
+                    </li>
+                    <li><a href="blog.php">Blog</a></li>
+                    <li><a href="about.php">About</a></li>
+                    <li><a href="contact.php">Contact</a></li>
+                   
+                        <li><a href="#"><i class="fa-solid fa-user"></i></a>
+                                    <ul class=" avt-reponsive">
+                                        <li><a href="../View/profile.php">Profile</a></li>
+                                        <li><a href="../View/logout.php">Logout</i></a></li>
+                                    </ul>
+                    </li>
+                </ul>
+            </div>
+        </div>
 
     <section id="header">
         <a href="../index.php"><img class="logo" src="../ds/img/chototlogo.png" alt=""></a>
@@ -230,4 +257,13 @@ if(!isset($_SESSION['IS_LOGIN'])){
     
     <script src="../ds/script.js"></script>
 </body>
+<script src="../ds/js/jquery-3.6.0.min.js"></script>
+<script>
+    $(document).ready(function () {
+        $('#bar').click(function (e) {
+            // xử lý class
+            $('.reponsive-header').toggleClass('noidunghienra');
+        });
+    })
+</script>
 </html>

@@ -1,7 +1,8 @@
 .profile {
     display: flex;
     position: absolute;
-    top: 15%;
+    top: 20%;
+    right: 20%;
 }
 
 .avt {
@@ -18,7 +19,7 @@
     border: 2px solid black;
     border-radius: 10px;
     background: #E3E6F3;
-    padding: 50px;
+    padding: 30px;
     transform: translateX(100px);
 }
 
@@ -68,15 +69,4 @@ input:focus {
 .submit:hover {
     background: rgb(68, 68, 240);
     transition: 0.3s;
-}
-
-@media screen and (max-width: 1500px) {
-    .avt {
-        display: none;
-    }
-    .profile form {
-        display: flex;
-        justify-content: center;
-        align-items: center;
-    }
 }

@@ -30,10 +30,3 @@ function Change(i) {
     document.getElementById('cs').value = (Math.round(total * 100) / 100).toLocaleString()
     document.getElementById('total').value = (Math.round(total * 100) / 100).toLocaleString()
 }
-
-
-
-
-
-
-

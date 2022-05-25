@@ -32,7 +32,7 @@
 .table tr th {
     border-radius: 5px;
     font-size: 20px;
-    padding: 20px 36px;
+    padding: 20px 28px;
     border: 3px solid black;
 }
 
@@ -204,7 +204,7 @@ input:focus {
     float: right;
     font-size: 20px;
     cursor: pointer;
-    margin-right: 61%;
+    margin-right: 56%;
 }
 
 .close-user {
@@ -216,7 +216,7 @@ input:focus {
     float: right;
     font-size: 20px;
     cursor: pointer;
-    margin-right: 67%;
+    margin-right: 61%;
 }
 
 .submit:hover {

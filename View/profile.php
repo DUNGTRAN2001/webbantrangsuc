@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Web bán hàng</title>
+    <title>JEWELRYxPALACE</title>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css" />
 
     <link rel="stylesheet" href="../ds/fontawesome-free-6.1.1-web/fontawesome-free-6.1.1-web/css/all.min.css">
@@ -31,7 +31,7 @@
         <div>
             <ul id="navbar">
                 <li><a href="../index.php">Home</a></li>
-                <li><a  class="active" href="shop.php?page=1">Shop</a>
+                <li><a   href="shop.php?page=1">Shop</a>
                 <ul class="dropdown">
                     <li><a   href="bongtai.php">Bông tai</a></li>
                     <li><a   href="daychuyen.php">Dây chuyền</a></li>
@@ -49,7 +49,7 @@
                     ?>
                     <nav role="navigation">
                         <ul>
-                            <li><a href="#"><i class="fa-solid fa-user"></i></a>
+                            <li><a class="active" href="#"><i class="fa-solid fa-user"></i></a>
                                 <ul class="dropdown">
                                     <li><a href="../View/profile.php">Profile</a></li>
                                     <li><a href="../View/logout.php">Logout</i></a></li>

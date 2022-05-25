@@ -8,7 +8,7 @@ setcookie('path', __DIR__, time() + 60 * 60 * 24 * 365, '/');
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Web bán hàng</title>
+    <title>JEWELRYxPALACE</title>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css" />
 
     <link rel="stylesheet" href="ds/fontawesome-free-6.1.1-web/fontawesome-free-6.1.1-web/css/all.min.css">
@@ -21,7 +21,34 @@ setcookie('path', __DIR__, time() + 60 * 60 * 24 * 365, '/');
 </head>
 <body>
     
-
+<?php
+    error_reporting(E_ERROR | E_PARSE);
+    ?>
+    <div class="reponsive">
+            <div class="reponsive-header" >
+                <ul>
+                    <li><a href="#">Home</a></li>
+                    <li><a class="reponsive-active" href="./View/shop.php?page=1">Shop</a>
+                        <ul class="shop-list">
+                            <li><a   href="./View/bongtai.php">Bông tai</a></li>
+                            <li><a   href="./View/daychuyen.php">Dây chuyền</a></li>
+                            <li><a   href="./View/vongtay.php">Vòng tay</a></li>
+                            <li><a   href="./View/nhan.php">Nhẫn</a></li>
+                        </ul>            
+                    </li>
+                    <li><a href="View/blog.php">Blog</a></li>
+                    <li><a href="View/about.php">About</a></li>
+                    <li><a href="View/contact.php">Contact</a></li>
+                   
+                        <li><a href="#"><i class="fa-solid fa-user"></i></a>
+                                    <ul class=" avt-reponsive">
+                                        <li><a href="View/profile.php">Profile</a></li>
+                                        <li><a href="View/logout.php">Logout</i></a></li>
+                                    </ul>
+                    </li>
+                </ul>
+            </div>
+        </div>
 
     <section id="header">
         <a href="#"><img class="logo" src="ds/img/chototlogo.png" alt=""></a>
@@ -315,4 +342,13 @@ setcookie('path', __DIR__, time() + 60 * 60 * 24 * 365, '/');
 
     <script src="ds/script.js"></script>
 </body>
+<script src="../ds/js/jquery-3.6.0.min.js"></script>
+<script>
+    $(document).ready(function () {
+        $('#bar').click(function (e) {
+            // xử lý class
+            $('.reponsive-header').toggleClass('noidunghienra');
+        });
+    })
+</script>
 </html>

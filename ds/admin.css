@@ -2,6 +2,7 @@
     width: 100%;
     height: 100vh;
     position: relative;
+    overflow: hidden;
 }
 
 .category {
@@ -16,7 +17,7 @@
 .title-admin {
     margin-top: 50px;
     margin-left: 40px;
-    font-size: 30px;
+    font-size: 26px;
     color: #088178;
     font-weight: bolder;
 }
